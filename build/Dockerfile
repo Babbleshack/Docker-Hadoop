@@ -38,8 +38,10 @@ ENV YARN_RESOURCEMANAGER_USER="root"
 ENV YARN_NODEMANAGER_USER="root"
 ENV YARN_EXAMPLES=${HADOOP_HOME}/share/hadoop/mapreduce
 
-#Configure Container
+#WORK ENVIRONMENT
+ENV WORKDIR=/hadoop
 
+#Configure Container
 RUN apt update && apt install -y \
         bash \
         vim \
@@ -79,16 +81,16 @@ RUN mkdir -pv ${HADOOP_DATA_NODE_DATA} \
         && mkdir -pv ${HADOOP_TEMPDIR} \
         && mkdir -pv ${ENTRYPOINT_SCRIPT_DIR}
 
+RUN mkdir -pv /hadoop/scripts
+COPY ./files/init_scripts/* ${WORKDIR}/scripts/
+WORKDIR /${WORKDIR} 
 
 ##############################
 ##FEDERATED IMAGE
 ##############################
 FROM base AS federated
 
-RUN mkdir -pv /hadoop
-WORKDIR /hadoop
-
 RUN mkdir -pv federation/client
-COPY ./files/federated_confs/client/* ./federation/client
+COPY ./files/federated_confs/client/* /${WORKDIR}/federation/client
 COPY ./files/federated_confs/node/* ${HADOOP_HOME}/etc/hadoop
 
