@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:bionic AS base
 
 MAINTAINER Babbleshack <dcrl94@gmail.com> Version: 0.1
 
@@ -78,3 +78,17 @@ RUN mkdir -pv ${HADOOP_DATA_NODE_DATA} \
         && mkdir -pv ${HADOOP_NAME_NODE_DATA} \
         && mkdir -pv ${HADOOP_TEMPDIR} \
         && mkdir -pv ${ENTRYPOINT_SCRIPT_DIR}
+
+
+##############################
+##FEDERATED IMAGE
+##############################
+FROM base AS federated
+
+RUN mkdir -pv /hadoop
+WORKDIR /hadoop
+
+RUN mkdir -pv federation/client
+COPY ./files/federated_confs/client/* ./federation/client
+COPY ./files/federated_confs/node/* ${HADOOP_HOME}/etc/hadoop
+
