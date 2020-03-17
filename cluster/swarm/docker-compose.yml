@@ -1,0 +1,17 @@
+version '3'
+
+services:
+  resourcemanager:
+    image: babbleshack/hadoop:3-2-1-federation-master
+    restart: unless-stopped
+    hostname: hadoop-master
+  
+  nodemanager:
+    image: babbleshack/hadoop:3-2-1-federation-nodemanager
+    restart: unless-stopped
+
+  zookeeper:
+    image: zookeper
+    restart: unless-stopped
+
+
