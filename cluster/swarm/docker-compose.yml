@@ -7,13 +7,19 @@ services:
     restart: unless-stopped
     hostname: hadoop-master
     command: "/bin/sleep infinity"
+    deploy:
+      placement:
+        constraints:
+          - "node.labels.role==master"
   
   nodemanager:
     image: babbleshack/hadoop:3-2-1-federation
     restart: unless-stopped
     command: "/bin/sleep infinity"
     deploy:
-      replicas: 3
+      placement:
+        constraints:
+          - "node.labels.role==master"
 
   namenode:
     image: babbleshack/hadoop:3-2-1
@@ -21,6 +27,9 @@ services:
     command: "/bin/sleep infinity"
     deploy:
       replicas: 3
+      placement:
+        constraints:
+          - "node.labels.role==worker"
 
   datanode:
     image: babbleshack/hadoop:3-2-1
@@ -28,10 +37,20 @@ services:
     command: "/bin/sleep infinity"
     deploy:
       replicas: 3
+      placement:
+        constraints:
+          - "node.labels.role==worker"
 
   zookeeper:
     image: zookeeper:3.4
     container_name: zookeeper
     restart: unless-stopped
+    deploy:
+      placement:
+        constraints:
+          - "node.labels.role==master"
 
-
+#networks:
+#  hostnet:
+#    external: true
+#    name: host
