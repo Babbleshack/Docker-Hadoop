@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hadoop-workers-configmap
+  namespace: hadoop
+  labels:
+    app: hadoop
+data:
+  workers: |
+    hdfs-datanode-0.hdfs-datanode-service

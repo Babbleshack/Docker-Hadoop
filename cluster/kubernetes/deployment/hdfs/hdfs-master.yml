@@ -1,0 +1,54 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: hdfs-master
+  namespace: hdfs
+  labels:
+    app: hdfs
+    hdfs: master
+spec:
+  serviceName: hdfs-service
+  replicas: 1 
+  selector:
+    matchLabels:
+      hdfs: master
+  template: #pod template .spec.template
+    metadata:
+      namespace: hdfs
+      labels:
+        app: hdfs
+        hdfs: master
+    spec:
+      hostname: hdfs-master-0
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - hdfs
+              topologyKey: "kubernetes.io/hostname"
+      nodeSelector:
+        hdfs: master
+      containers:
+        - name: hdfs-master
+          #image: babbleshack/hdfs:master
+          image: babbleshack/hadoop:base
+          imagePullPolicy: Always
+          command: [ "/bin/bash" ]
+          args: [ "/opt/init_container.d/start_hdfs.sh" ]
+
+          ports:
+            - name: nn-rpc
+              containerPort: 9000
+            - name: nn-web
+              containerPort: 50070
+            - name: s-nn
+              containerPort: 50090
+          env:
+            - name: CLUSTER_NAME
+              value: hdfs-k8s

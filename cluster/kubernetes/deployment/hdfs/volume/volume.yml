@@ -1,0 +1,43 @@
+---
+# persistent volume
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: master-pv
+  labels:
+    app: hadoop
+    type: master
+    hadoop: master
+spec:
+  capacity:
+    storage: 5Gi
+  volumeMode: Filesystem
+  accessModes: [ "ReadWriteOnce" ]
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: local-storage
+  local:
+    path: /opt/hadoop/hdfs/master
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: hadoop
+            operator: In
+            values:
+            - master
+---
+# persistent volume claim
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: master-pv-claim
+  labels:
+    app: hadoop
+    hadoop: master
+spec:
+  volumeMode: Filesystem
+  accessModes: [ "ReadWriteOnce" ]
+  storageClassName: local-storage
+  resources:
+    requests:
+      storage: 4Gi

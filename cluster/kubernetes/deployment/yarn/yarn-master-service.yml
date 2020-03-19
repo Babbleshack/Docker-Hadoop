@@ -1,0 +1,52 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: yarn-master-service
+  namespace: yarn
+  labels:
+    app: yarn
+    yarn: master
+spec:
+  selector:
+    yarn: master
+  ports: #Hadoop port http://fibrevillage.com/storage/637-hadoop-default-ports-reference
+    - name: rm-sched
+      protocol: TCP
+      port: 8030
+    - name: rt
+      protocol: TCP
+      port: 8031
+    - name: rm
+      protocol: TCP
+      port: 8032
+    - name: rm-admin
+      protocol: TCP
+      port: 8033
+    - name: nm
+      protocol: TCP
+      port: 8040
+    - name: nm-2
+      protocol: TCP
+      port: 8042
+    - name: amrmproxy
+      protocol: TCP
+      port: 8049
+    - name: rm-admin-http
+      protocol: TCP
+      port: 8088
+    - name: tl-server
+      protocol: TCP
+      port: 8188
+    - name: job-his-rpc
+      protocol: TCP
+      port: 10020
+    - name: job-his
+      protocol: TCP
+      port: 10033
+    - name: nm-3
+      protocol: TCP
+      port: 13562
+    - name: job-his-ui
+      protocol: TCP
+      port: 19888

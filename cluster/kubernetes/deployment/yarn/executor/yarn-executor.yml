@@ -1,0 +1,54 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: yarn-executor
+  namespace: yarn
+  labels:
+    app: yarn
+    yarn: executor
+spec:
+  serviceName: yarn-service
+  replicas: 1 
+  selector:
+    matchLabels:
+      yarn: executor
+  template: #pod template .spec.template
+    metadata:
+      namespace: yarn
+      labels:
+        app: yarn
+        yarn: executor
+    spec:
+      hostname: yarn-executor
+      containers:
+        - name: yarn-executor
+          image: babbleshack/hadoop:distributed
+          imagePullPolicy: Always
+          command: [ "/bin/bash", "-c", "--" ]
+          args: [ "while true; do sleep 30; done;" ]
+          ports:
+            - name: rm-sched
+              containerPort: 8030
+            - name: rt
+              containerPort: 8031
+            - name: rm
+              containerPort: 8032
+            - name: rm-admin
+              containerPort: 8033
+            - name: rmam-proxy
+              containerPort: 8049
+            - name: rm-admin-http
+              containerPort: 8088
+            - name: job-his-rpc
+              containerPort: 10020
+            - name: job-his
+              containerPort: 10033
+            - name: job-his-ui
+              containerPort: 19888
+            - name: webapp
+              containerPort: 8088
+            - name: timeline-serv
+              containerPort: 8188
+            - name: timeline-rpc
+              containerPort: 10200

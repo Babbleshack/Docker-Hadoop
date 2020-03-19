@@ -1,0 +1,517 @@
+--------------------[1]-----------------------------
+19/07/08 21:46:16 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/07/08 21:46:16 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/07/08 21:46:16 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/07/08 21:46:16 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/07/08 21:46:17 INFO client.RMProxy: Connecting to ResourceManager at yarn-master-0.yarn-service.yarn/10.244.1.119:8032
+19/07/08 21:46:17 INFO client.RMProxy: Connecting to ResourceManager at yarn-master-0.yarn-service.yarn/10.244.1.119:8032
+19/07/08 21:46:17 INFO client.RMProxy: Connecting to ResourceManager at yarn-master-0.yarn-service.yarn/10.244.1.119:8032
+19/07/08 21:46:17 INFO client.AHSProxy: Connecting to Application History server at /0.0.0.0:10200
+19/07/08 21:46:17 INFO client.RMProxy: Connecting to ResourceManager at yarn-master-0.yarn-service.yarn/10.244.1.119:8032
+19/07/08 21:46:17 INFO client.AHSProxy: Connecting to Application History server at /0.0.0.0:10200
+19/07/08 21:46:17 INFO client.AHSProxy: Connecting to Application History server at /0.0.0.0:10200
+19/07/08 21:46:17 INFO client.AHSProxy: Connecting to Application History server at /0.0.0.0:10200
+19/07/08 21:46:18 INFO input.FileInputFormat: Total input files to process : 1
+19/07/08 21:46:18 INFO input.FileInputFormat: Total input files to process : 1
+19/07/08 21:46:18 INFO input.FileInputFormat: Total input files to process : 1
+19/07/08 21:46:18 INFO input.FileInputFormat: Total input files to process : 1
+19/07/08 21:46:18 INFO mapreduce.JobSubmitter: number of splits:153
+19/07/08 21:46:18 INFO Configuration.deprecation: yarn.resourcemanager.system-metrics-publisher.enabled is deprecated. Instead, use yarn.system-metrics-publisher.enabled
+19/07/08 21:46:18 INFO mapreduce.JobSubmitter: number of splits:153
+19/07/08 21:46:18 INFO mapreduce.JobSubmitter: number of splits:153
+19/07/08 21:46:18 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1562621358074_0008
+19/07/08 21:46:18 INFO mapreduce.JobSubmitter: number of splits:153
+19/07/08 21:46:18 INFO Configuration.deprecation: yarn.resourcemanager.system-metrics-publisher.enabled is deprecated. Instead, use yarn.system-metrics-publisher.enabled
+19/07/08 21:46:18 INFO Configuration.deprecation: yarn.resourcemanager.system-metrics-publisher.enabled is deprecated. Instead, use yarn.system-metrics-publisher.enabled
+19/07/08 21:46:18 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1562621358074_0010
+19/07/08 21:46:18 INFO Configuration.deprecation: yarn.resourcemanager.system-metrics-publisher.enabled is deprecated. Instead, use yarn.system-metrics-publisher.enabled
+19/07/08 21:46:18 INFO impl.YarnClientImpl: Submitted application application_1562621358074_0008
+19/07/08 21:46:18 INFO mapreduce.Job: The url to track the job: http://yarn-master-0.yarn-service.yarn.svc.cluster.local:8088/proxy/application_1562621358074_0008/
+19/07/08 21:46:18 INFO mapreduce.Job: Running job: job_1562621358074_0008
+19/07/08 21:46:18 INFO impl.YarnClientImpl: Submitted application application_1562621358074_0010
+19/07/08 21:46:18 INFO mapreduce.Job: The url to track the job: http://yarn-master-0.yarn-service.yarn.svc.cluster.local:8088/proxy/application_1562621358074_0010/
+19/07/08 21:46:18 INFO mapreduce.Job: Running job: job_1562621358074_0010
+19/07/08 21:46:19 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1562621358074_0009
+19/07/08 21:46:19 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1562621358074_0011
+19/07/08 21:46:19 INFO impl.YarnClientImpl: Submitted application application_1562621358074_0009
+19/07/08 21:46:19 INFO mapreduce.Job: The url to track the job: http://yarn-master-0.yarn-service.yarn.svc.cluster.local:8088/proxy/application_1562621358074_0009/
+19/07/08 21:46:19 INFO mapreduce.Job: Running job: job_1562621358074_0009
+19/07/08 21:46:19 INFO impl.YarnClientImpl: Submitted application application_1562621358074_0011
+19/07/08 21:46:19 INFO mapreduce.Job: The url to track the job: http://yarn-master-0.yarn-service.yarn.svc.cluster.local:8088/proxy/application_1562621358074_0011/
+19/07/08 21:46:19 INFO mapreduce.Job: Running job: job_1562621358074_0011
+19/07/08 21:46:23 INFO mapreduce.Job: Job job_1562621358074_0010 running in uber mode : false
+19/07/08 21:46:23 INFO mapreduce.Job:  map 0% reduce 0%
+19/07/08 21:46:23 INFO mapreduce.Job: Job job_1562621358074_0011 running in uber mode : false
+19/07/08 21:46:23 INFO mapreduce.Job:  map 0% reduce 0%
+19/07/08 21:46:24 INFO mapreduce.Job: Job job_1562621358074_0008 running in uber mode : false
+19/07/08 21:46:24 INFO mapreduce.Job:  map 0% reduce 0%
+19/07/08 21:46:24 INFO mapreduce.Job: Job job_1562621358074_0009 running in uber mode : false
+19/07/08 21:46:24 INFO mapreduce.Job:  map 0% reduce 0%
+19/07/08 21:46:42 INFO mapreduce.Job:  map 1% reduce 0%
+19/07/08 21:46:42 INFO mapreduce.Job:  map 1% reduce 0%
+19/07/08 21:46:42 INFO mapreduce.Job:  map 1% reduce 0%
+19/07/08 21:46:42 INFO mapreduce.Job:  map 1% reduce 0%
+19/07/08 21:46:46 INFO mapreduce.Job:  map 2% reduce 0%
+19/07/08 21:46:47 INFO mapreduce.Job:  map 2% reduce 0%
+19/07/08 21:46:47 INFO mapreduce.Job:  map 2% reduce 0%
+19/07/08 21:46:47 INFO mapreduce.Job:  map 2% reduce 0%
+19/07/08 21:46:51 INFO mapreduce.Job:  map 3% reduce 0%
+19/07/08 21:46:51 INFO mapreduce.Job:  map 3% reduce 0%
+19/07/08 21:46:52 INFO mapreduce.Job:  map 3% reduce 0%
+19/07/08 21:46:52 INFO mapreduce.Job:  map 3% reduce 0%
+19/07/08 21:46:54 INFO mapreduce.Job:  map 4% reduce 0%
+19/07/08 21:46:55 INFO mapreduce.Job:  map 4% reduce 0%
+19/07/08 21:46:55 INFO mapreduce.Job:  map 4% reduce 0%
+19/07/08 21:46:55 INFO mapreduce.Job:  map 4% reduce 0%
+19/07/08 21:46:56 INFO mapreduce.Job:  map 5% reduce 0%
+19/07/08 21:46:57 INFO mapreduce.Job:  map 5% reduce 0%
+19/07/08 21:46:57 INFO mapreduce.Job:  map 5% reduce 0%
+19/07/08 21:46:58 INFO mapreduce.Job:  map 5% reduce 0%
+19/07/08 21:46:59 INFO mapreduce.Job:  map 6% reduce 0%
+19/07/08 21:46:59 INFO mapreduce.Job:  map 6% reduce 0%
+19/07/08 21:46:59 INFO mapreduce.Job:  map 6% reduce 0%
+19/07/08 21:47:01 INFO mapreduce.Job:  map 7% reduce 0%
+19/07/08 21:47:01 INFO mapreduce.Job:  map 7% reduce 0%
+19/07/08 21:47:01 INFO mapreduce.Job:  map 6% reduce 0%
+19/07/08 21:47:02 INFO mapreduce.Job:  map 7% reduce 0%
+19/07/08 21:47:03 INFO mapreduce.Job:  map 7% reduce 0%
+19/07/08 21:47:04 INFO mapreduce.Job:  map 8% reduce 0%
+19/07/08 21:47:06 INFO mapreduce.Job:  map 8% reduce 0%
+19/07/08 21:47:07 INFO mapreduce.Job:  map 9% reduce 0%
+19/07/08 21:47:07 INFO mapreduce.Job:  map 8% reduce 0%
+19/07/08 21:47:07 INFO mapreduce.Job:  map 8% reduce 0%
+19/07/08 21:47:09 INFO mapreduce.Job:  map 9% reduce 0%
+19/07/08 21:47:11 INFO mapreduce.Job:  map 9% reduce 0%
+19/07/08 21:47:11 INFO mapreduce.Job:  map 9% reduce 0%
+19/07/08 21:47:12 INFO mapreduce.Job:  map 10% reduce 0%
+19/07/08 21:47:13 INFO mapreduce.Job:  map 10% reduce 0%
+19/07/08 21:47:14 INFO mapreduce.Job:  map 10% reduce 0%
+19/07/08 21:47:16 INFO mapreduce.Job:  map 10% reduce 0%
+19/07/08 21:47:18 INFO mapreduce.Job:  map 11% reduce 0%
+19/07/08 21:47:18 INFO mapreduce.Job:  map 11% reduce 0%
+19/07/08 21:47:19 INFO mapreduce.Job:  map 11% reduce 3%
+19/07/08 21:47:19 INFO mapreduce.Job:  map 10% reduce 3%
+19/07/08 21:47:20 INFO mapreduce.Job:  map 12% reduce 3%
+19/07/08 21:47:20 INFO mapreduce.Job:  map 11% reduce 3%
+19/07/08 21:47:22 INFO mapreduce.Job:  map 11% reduce 0%
+19/07/08 21:47:22 INFO mapreduce.Job:  map 11% reduce 3%
+19/07/08 21:47:24 INFO mapreduce.Job:  map 11% reduce 3%
+19/07/08 21:47:24 INFO mapreduce.Job:  map 12% reduce 3%
+19/07/08 21:47:25 INFO mapreduce.Job:  map 13% reduce 3%
+19/07/08 21:47:25 INFO mapreduce.Job:  map 12% reduce 3%
+19/07/08 21:47:27 INFO mapreduce.Job:  map 12% reduce 3%
+19/07/08 21:47:28 INFO mapreduce.Job:  map 14% reduce 3%
+19/07/08 21:47:28 INFO mapreduce.Job:  map 13% reduce 3%
+19/07/08 21:47:29 INFO mapreduce.Job:  map 13% reduce 3%
+19/07/08 21:47:29 INFO mapreduce.Job:  map 13% reduce 3%
+19/07/08 21:47:31 INFO mapreduce.Job:  map 14% reduce 4%
+19/07/08 21:47:31 INFO mapreduce.Job:  map 13% reduce 4%
+19/07/08 21:47:32 INFO mapreduce.Job:  map 14% reduce 4%
+19/07/08 21:47:33 INFO mapreduce.Job:  map 14% reduce 3%
+19/07/08 21:47:33 INFO mapreduce.Job:  map 15% reduce 4%
+19/07/08 21:47:35 INFO mapreduce.Job:  map 14% reduce 4%
+19/07/08 21:47:35 INFO mapreduce.Job:  map 14% reduce 3%
+19/07/08 21:47:35 INFO mapreduce.Job:  map 15% reduce 4%
+19/07/08 21:47:36 INFO mapreduce.Job:  map 15% reduce 4%
+19/07/08 21:47:36 INFO mapreduce.Job:  map 14% reduce 4%
+19/07/08 21:47:36 INFO mapreduce.Job:  map 16% reduce 4%
+19/07/08 21:47:37 INFO mapreduce.Job:  map 16% reduce 5%
+19/07/08 21:47:38 INFO mapreduce.Job:  map 15% reduce 4%
+19/07/08 21:47:39 INFO mapreduce.Job:  map 16% reduce 4%
+19/07/08 21:47:40 INFO mapreduce.Job:  map 16% reduce 4%
+19/07/08 21:47:40 INFO mapreduce.Job:  map 17% reduce 5%
+19/07/08 21:47:41 INFO mapreduce.Job:  map 16% reduce 5%
+19/07/08 21:47:43 INFO mapreduce.Job:  map 16% reduce 5%
+19/07/08 21:47:44 INFO mapreduce.Job:  map 17% reduce 5%
+19/07/08 21:47:44 INFO mapreduce.Job:  map 16% reduce 4%
+19/07/08 21:47:44 INFO mapreduce.Job:  map 17% reduce 5%
+19/07/08 21:47:45 INFO mapreduce.Job:  map 18% reduce 5%
+19/07/08 21:47:48 INFO mapreduce.Job:  map 18% reduce 5%
+19/07/08 21:47:48 INFO mapreduce.Job:  map 17% reduce 5%
+19/07/08 21:47:48 INFO mapreduce.Job:  map 19% reduce 5%
+19/07/08 21:47:48 INFO mapreduce.Job:  map 18% reduce 5%
+19/07/08 21:47:49 INFO mapreduce.Job:  map 19% reduce 6%
+19/07/08 21:47:51 INFO mapreduce.Job:  map 18% reduce 5%
+19/07/08 21:47:51 INFO mapreduce.Job:  map 20% reduce 6%
+19/07/08 21:47:52 INFO mapreduce.Job:  map 19% reduce 5%
+19/07/08 21:47:53 INFO mapreduce.Job:  map 19% reduce 6%
+19/07/08 21:47:53 INFO mapreduce.Job:  map 19% reduce 5%
+19/07/08 21:47:54 INFO mapreduce.Job:  map 18% reduce 6%
+19/07/08 21:47:55 INFO mapreduce.Job:  map 21% reduce 6%
+19/07/08 21:47:55 INFO mapreduce.Job:  map 19% reduce 6%
+19/07/08 21:47:57 INFO mapreduce.Job:  map 20% reduce 6%
+19/07/08 21:47:57 INFO mapreduce.Job:  map 19% reduce 6%
+19/07/08 21:47:58 INFO mapreduce.Job:  map 22% reduce 6%
+19/07/08 21:47:58 INFO mapreduce.Job:  map 20% reduce 6%
+19/07/08 21:48:00 INFO mapreduce.Job:  map 21% reduce 6%
+19/07/08 21:48:01 INFO mapreduce.Job:  map 20% reduce 6%
+19/07/08 21:48:01 INFO mapreduce.Job:  map 22% reduce 7%
+19/07/08 21:48:01 INFO mapreduce.Job:  map 21% reduce 6%
+19/07/08 21:48:03 INFO mapreduce.Job:  map 23% reduce 7%
+19/07/08 21:48:04 INFO mapreduce.Job:  map 22% reduce 6%
+19/07/08 21:48:04 INFO mapreduce.Job:  map 21% reduce 6%
+19/07/08 21:48:05 INFO mapreduce.Job:  map 22% reduce 7%
+19/07/08 21:48:06 INFO mapreduce.Job:  map 22% reduce 6%
+19/07/08 21:48:07 INFO mapreduce.Job:  map 23% reduce 7%
+19/07/08 21:48:07 INFO mapreduce.Job:  map 24% reduce 7%
+19/07/08 21:48:08 INFO mapreduce.Job:  map 22% reduce 7%
+19/07/08 21:48:09 INFO mapreduce.Job:  map 22% reduce 6%
+19/07/08 21:48:10 INFO mapreduce.Job:  map 23% reduce 7%
+19/07/08 21:48:11 INFO mapreduce.Job:  map 22% reduce 7%
+19/07/08 21:48:11 INFO mapreduce.Job:  map 25% reduce 7%
+19/07/08 21:48:12 INFO mapreduce.Job:  map 24% reduce 7%
+19/07/08 21:48:12 INFO mapreduce.Job:  map 24% reduce 7%
+19/07/08 21:48:12 INFO mapreduce.Job:  map 23% reduce 7%
+19/07/08 21:48:13 INFO mapreduce.Job:  map 25% reduce 8%
+19/07/08 21:48:14 INFO mapreduce.Job:  map 25% reduce 7%
+19/07/08 21:48:15 INFO mapreduce.Job:  map 26% reduce 8%
+19/07/08 21:48:17 INFO mapreduce.Job:  map 25% reduce 7%
+19/07/08 21:48:17 INFO mapreduce.Job:  map 25% reduce 8%
+19/07/08 21:48:17 INFO mapreduce.Job:  map 24% reduce 7%
+19/07/08 21:48:19 INFO mapreduce.Job:  map 27% reduce 8%
+19/07/08 21:48:20 INFO mapreduce.Job:  map 25% reduce 8%
+19/07/08 21:48:20 INFO mapreduce.Job:  map 26% reduce 8%
+19/07/08 21:48:21 INFO mapreduce.Job:  map 26% reduce 8%
+19/07/08 21:48:21 INFO mapreduce.Job:  map 25% reduce 7%
+19/07/08 21:48:23 INFO mapreduce.Job:  map 27% reduce 8%
+19/07/08 21:48:23 INFO mapreduce.Job:  map 25% reduce 8%
+19/07/08 21:48:24 INFO mapreduce.Job:  map 28% reduce 8%
+19/07/08 21:48:26 INFO mapreduce.Job:  map 27% reduce 8%
+19/07/08 21:48:26 INFO mapreduce.Job:  map 28% reduce 8%
+19/07/08 21:48:26 INFO mapreduce.Job:  map 26% reduce 8%
+19/07/08 21:48:27 INFO mapreduce.Job:  map 29% reduce 8%
+19/07/08 21:48:29 INFO mapreduce.Job:  map 28% reduce 8%
+19/07/08 21:48:29 INFO mapreduce.Job:  map 28% reduce 9%
+19/07/08 21:48:30 INFO mapreduce.Job:  map 27% reduce 8%
+19/07/08 21:48:30 INFO mapreduce.Job:  map 29% reduce 9%
+19/07/08 21:48:31 INFO mapreduce.Job:  map 28% reduce 9%
+19/07/08 21:48:31 INFO mapreduce.Job:  map 29% reduce 9%
+19/07/08 21:48:32 INFO mapreduce.Job:  map 30% reduce 9%
+19/07/08 21:48:33 INFO mapreduce.Job:  map 28% reduce 8%
+19/07/08 21:48:34 INFO mapreduce.Job:  map 29% reduce 9%
+19/07/08 21:48:35 INFO mapreduce.Job:  map 30% reduce 9%
+19/07/08 21:48:37 INFO mapreduce.Job:  map 31% reduce 9%
+19/07/08 21:48:37 INFO mapreduce.Job:  map 30% reduce 9%
+19/07/08 21:48:38 INFO mapreduce.Job:  map 31% reduce 9%
+19/07/08 21:48:39 INFO mapreduce.Job:  map 32% reduce 9%
+19/07/08 21:48:39 INFO mapreduce.Job:  map 29% reduce 8%
+19/07/08 21:48:41 INFO mapreduce.Job:  map 31% reduce 10%
+19/07/08 21:48:41 INFO mapreduce.Job:  map 30% reduce 9%
+19/07/08 21:48:42 INFO mapreduce.Job:  map 33% reduce 9%
+19/07/08 21:48:42 INFO mapreduce.Job:  map 31% reduce 9%
+19/07/08 21:48:43 INFO mapreduce.Job:  map 33% reduce 10%
+19/07/08 21:48:43 INFO mapreduce.Job:  map 31% reduce 10%
+19/07/08 21:48:43 INFO mapreduce.Job:  map 32% reduce 10%
+19/07/08 21:48:46 INFO mapreduce.Job:  map 34% reduce 10%
+19/07/08 21:48:46 INFO mapreduce.Job:  map 32% reduce 10%
+19/07/08 21:48:46 INFO mapreduce.Job:  map 31% reduce 9%
+19/07/08 21:48:47 INFO mapreduce.Job:  map 33% reduce 10%
+19/07/08 21:48:47 INFO mapreduce.Job:  map 31% reduce 10%
+19/07/08 21:48:49 INFO mapreduce.Job:  map 34% reduce 11%
+19/07/08 21:48:49 INFO mapreduce.Job:  map 32% reduce 10%
+19/07/08 21:48:50 INFO mapreduce.Job:  map 35% reduce 11%
+19/07/08 21:48:50 INFO mapreduce.Job:  map 33% reduce 10%
+19/07/08 21:48:50 INFO mapreduce.Job:  map 34% reduce 10%
+19/07/08 21:48:53 INFO mapreduce.Job:  map 34% reduce 11%
+19/07/08 21:48:54 INFO mapreduce.Job:  map 33% reduce 10%
+19/07/08 21:48:55 INFO mapreduce.Job:  map 34% reduce 10%
+19/07/08 21:48:56 INFO mapreduce.Job:  map 36% reduce 11%
+19/07/08 21:48:56 INFO mapreduce.Job:  map 35% reduce 11%
+19/07/08 21:48:57 INFO mapreduce.Job:  map 34% reduce 10%
+19/07/08 21:48:58 INFO mapreduce.Job:  map 35% reduce 10%
+19/07/08 21:48:59 INFO mapreduce.Job:  map 37% reduce 11%
+19/07/08 21:48:59 INFO mapreduce.Job:  map 34% reduce 11%
+19/07/08 21:49:00 INFO mapreduce.Job:  map 36% reduce 11%
+19/07/08 21:49:01 INFO mapreduce.Job:  map 37% reduce 12%
+19/07/08 21:49:01 INFO mapreduce.Job:  map 35% reduce 11%
+19/07/08 21:49:02 INFO mapreduce.Job:  map 36% reduce 11%
+19/07/08 21:49:03 INFO mapreduce.Job:  map 35% reduce 11%
+19/07/08 21:49:04 INFO mapreduce.Job:  map 38% reduce 12%
+19/07/08 21:49:05 INFO mapreduce.Job:  map 37% reduce 12%
+19/07/08 21:49:06 INFO mapreduce.Job:  map 39% reduce 12%
+19/07/08 21:49:07 INFO mapreduce.Job:  map 37% reduce 12%
+19/07/08 21:49:07 INFO mapreduce.Job:  map 36% reduce 11%
+19/07/08 21:49:08 INFO mapreduce.Job:  map 38% reduce 12%
+19/07/08 21:49:10 INFO mapreduce.Job:  map 38% reduce 12%
+19/07/08 21:49:10 INFO mapreduce.Job:  map 37% reduce 11%
+19/07/08 21:49:11 INFO mapreduce.Job:  map 40% reduce 12%
+19/07/08 21:49:11 INFO mapreduce.Job:  map 37% reduce 12%
+19/07/08 21:49:13 INFO mapreduce.Job:  map 40% reduce 13%
+19/07/08 21:49:13 INFO mapreduce.Job:  map 39% reduce 12%
+19/07/08 21:49:13 INFO mapreduce.Job:  map 39% reduce 12%
+19/07/08 21:49:15 INFO mapreduce.Job:  map 41% reduce 13%
+19/07/08 21:49:15 INFO mapreduce.Job:  map 38% reduce 12%
+19/07/08 21:49:17 INFO mapreduce.Job:  map 40% reduce 12%
+19/07/08 21:49:17 INFO mapreduce.Job:  map 40% reduce 12%
+19/07/08 21:49:18 INFO mapreduce.Job:  map 42% reduce 13%
+19/07/08 21:49:19 INFO mapreduce.Job:  map 40% reduce 13%
+19/07/08 21:49:19 INFO mapreduce.Job:  map 41% reduce 12%
+19/07/08 21:49:19 INFO mapreduce.Job:  map 39% reduce 12%
+19/07/08 21:49:21 INFO mapreduce.Job:  map 41% reduce 13%
+19/07/08 21:49:22 INFO mapreduce.Job:  map 41% reduce 13%
+19/07/08 21:49:23 INFO mapreduce.Job:  map 43% reduce 13%
+19/07/08 21:49:23 INFO mapreduce.Job:  map 42% reduce 13%
+19/07/08 21:49:23 INFO mapreduce.Job:  map 40% reduce 13%
+19/07/08 21:49:25 INFO mapreduce.Job:  map 43% reduce 14%
+19/07/08 21:49:26 INFO mapreduce.Job:  map 44% reduce 14%
+19/07/08 21:49:26 INFO mapreduce.Job:  map 42% reduce 13%
+19/07/08 21:49:28 INFO mapreduce.Job:  map 45% reduce 14%
+19/07/08 21:49:28 INFO mapreduce.Job:  map 43% reduce 14%
+19/07/08 21:49:29 INFO mapreduce.Job:  map 41% reduce 13%
+19/07/08 21:49:30 INFO mapreduce.Job:  map 43% reduce 13%
+19/07/08 21:49:31 INFO mapreduce.Job:  map 45% reduce 15%
+19/07/08 21:49:31 INFO mapreduce.Job:  map 43% reduce 14%
+19/07/08 21:49:32 INFO mapreduce.Job:  map 44% reduce 14%
+19/07/08 21:49:32 INFO mapreduce.Job:  map 42% reduce 13%
+19/07/08 21:49:33 INFO mapreduce.Job:  map 46% reduce 15%
+19/07/08 21:49:34 INFO mapreduce.Job:  map 44% reduce 14%
+19/07/08 21:49:35 INFO mapreduce.Job:  map 43% reduce 13%
+19/07/08 21:49:36 INFO mapreduce.Job:  map 45% reduce 14%
+19/07/08 21:49:37 INFO mapreduce.Job:  map 47% reduce 15%
+19/07/08 21:49:38 INFO mapreduce.Job:  map 45% reduce 14%
+19/07/08 21:49:39 INFO mapreduce.Job:  map 44% reduce 13%
+19/07/08 21:49:40 INFO mapreduce.Job:  map 46% reduce 15%
+19/07/08 21:49:41 INFO mapreduce.Job:  map 48% reduce 15%
+19/07/08 21:49:41 INFO mapreduce.Job:  map 44% reduce 14%
+19/07/08 21:49:42 INFO mapreduce.Job:  map 46% reduce 14%
+19/07/08 21:49:42 INFO mapreduce.Job:  map 47% reduce 15%
+19/07/08 21:49:43 INFO mapreduce.Job:  map 46% reduce 15%
+19/07/08 21:49:44 INFO mapreduce.Job:  map 49% reduce 15%
+19/07/08 21:49:45 INFO mapreduce.Job:  map 45% reduce 14%
+19/07/08 21:49:47 INFO mapreduce.Job:  map 50% reduce 15%
+19/07/08 21:49:47 INFO mapreduce.Job:  map 47% reduce 15%
+19/07/08 21:49:48 INFO mapreduce.Job:  map 46% reduce 15%
+19/07/08 21:49:48 INFO mapreduce.Job:  map 48% reduce 15%
+19/07/08 21:49:49 INFO mapreduce.Job:  map 50% reduce 16%
+19/07/08 21:49:50 INFO mapreduce.Job:  map 51% reduce 16%
+19/07/08 21:49:50 INFO mapreduce.Job:  map 48% reduce 15%
+19/07/08 21:49:51 INFO mapreduce.Job:  map 49% reduce 15%
+19/07/08 21:49:52 INFO mapreduce.Job:  map 49% reduce 16%
+19/07/08 21:49:53 INFO mapreduce.Job:  map 47% reduce 15%
+19/07/08 21:49:53 INFO mapreduce.Job:  map 50% reduce 16%
+19/07/08 21:49:54 INFO mapreduce.Job:  map 49% reduce 15%
+19/07/08 21:49:55 INFO mapreduce.Job:  map 51% reduce 17%
+19/07/08 21:49:55 INFO mapreduce.Job:  map 49% reduce 16%
+19/07/08 21:49:56 INFO mapreduce.Job:  map 52% reduce 17%
+19/07/08 21:49:57 INFO mapreduce.Job:  map 48% reduce 15%
+19/07/08 21:49:58 INFO mapreduce.Job:  map 50% reduce 16%
+19/07/08 21:49:59 INFO mapreduce.Job:  map 51% reduce 16%
+19/07/08 21:50:00 INFO mapreduce.Job:  map 53% reduce 17%
+19/07/08 21:50:02 INFO mapreduce.Job:  map 49% reduce 15%
+19/07/08 21:50:03 INFO mapreduce.Job:  map 52% reduce 16%
+19/07/08 21:50:03 INFO mapreduce.Job:  map 51% reduce 16%
+19/07/08 21:50:04 INFO mapreduce.Job:  map 54% reduce 17%
+19/07/08 21:50:05 INFO mapreduce.Job:  map 52% reduce 17%
+19/07/08 21:50:06 INFO mapreduce.Job:  map 53% reduce 17%
+19/07/08 21:50:06 INFO mapreduce.Job:  map 50% reduce 16%
+19/07/08 21:50:07 INFO mapreduce.Job:  map 52% reduce 17%
+19/07/08 21:50:08 INFO mapreduce.Job:  map 55% reduce 17%
+19/07/08 21:50:10 INFO mapreduce.Job:  map 54% reduce 17%
+19/07/08 21:50:10 INFO mapreduce.Job:  map 56% reduce 17%
+19/07/08 21:50:11 INFO mapreduce.Job:  map 51% reduce 16%
+19/07/08 21:50:11 INFO mapreduce.Job:  map 53% reduce 17%
+19/07/08 21:50:13 INFO mapreduce.Job:  map 56% reduce 18%
+19/07/08 21:50:14 INFO mapreduce.Job:  map 55% reduce 17%
+19/07/08 21:50:14 INFO mapreduce.Job:  map 54% reduce 17%
+19/07/08 21:50:15 INFO mapreduce.Job:  map 57% reduce 18%
+19/07/08 21:50:16 INFO mapreduce.Job:  map 52% reduce 16%
+19/07/08 21:50:17 INFO mapreduce.Job:  map 55% reduce 18%
+19/07/08 21:50:19 INFO mapreduce.Job:  map 56% reduce 18%
+19/07/08 21:50:19 INFO mapreduce.Job:  map 53% reduce 16%
+19/07/08 21:50:19 INFO mapreduce.Job:  map 57% reduce 19%
+19/07/08 21:50:19 INFO mapreduce.Job:  map 55% reduce 18%
+19/07/08 21:50:20 INFO mapreduce.Job:  map 58% reduce 19%
+19/07/08 21:50:22 INFO mapreduce.Job:  map 54% reduce 16%
+19/07/08 21:50:23 INFO mapreduce.Job:  map 57% reduce 18%
+19/07/08 21:50:23 INFO mapreduce.Job:  map 56% reduce 18%
+19/07/08 21:50:24 INFO mapreduce.Job:  map 54% reduce 17%
+19/07/08 21:50:24 INFO mapreduce.Job:  map 59% reduce 19%
+19/07/08 21:50:26 INFO mapreduce.Job:  map 55% reduce 17%
+19/07/08 21:50:26 INFO mapreduce.Job:  map 57% reduce 18%
+19/07/08 21:50:27 INFO mapreduce.Job:  map 58% reduce 18%
+19/07/08 21:50:27 INFO mapreduce.Job:  map 60% reduce 19%
+19/07/08 21:50:29 INFO mapreduce.Job:  map 58% reduce 19%
+19/07/08 21:50:30 INFO mapreduce.Job:  map 56% reduce 18%
+19/07/08 21:50:31 INFO mapreduce.Job:  map 61% reduce 19%
+19/07/08 21:50:31 INFO mapreduce.Job:  map 57% reduce 19%
+19/07/08 21:50:32 INFO mapreduce.Job:  map 59% reduce 19%
+19/07/08 21:50:32 INFO mapreduce.Job:  map 58% reduce 19%
+19/07/08 21:50:35 INFO mapreduce.Job:  map 60% reduce 19%
+19/07/08 21:50:35 INFO mapreduce.Job:  map 57% reduce 18%
+19/07/08 21:50:35 INFO mapreduce.Job:  map 62% reduce 19%
+19/07/08 21:50:35 INFO mapreduce.Job:  map 59% reduce 19%
+19/07/08 21:50:37 INFO mapreduce.Job:  map 63% reduce 20%
+19/07/08 21:50:38 INFO mapreduce.Job:  map 61% reduce 19%
+19/07/08 21:50:38 INFO mapreduce.Job:  map 58% reduce 18%
+19/07/08 21:50:38 INFO mapreduce.Job:  map 60% reduce 19%
+19/07/08 21:50:41 INFO mapreduce.Job:  map 61% reduce 20%
+19/07/08 21:50:42 INFO mapreduce.Job:  map 58% reduce 19%
+19/07/08 21:50:43 INFO mapreduce.Job:  map 62% reduce 20%
+19/07/08 21:50:43 INFO mapreduce.Job:  map 59% reduce 19%
+19/07/08 21:50:43 INFO mapreduce.Job:  map 64% reduce 20%
+19/07/08 21:50:44 INFO mapreduce.Job:  map 61% reduce 20%
+19/07/08 21:50:45 INFO mapreduce.Job:  map 65% reduce 20%
+19/07/08 21:50:47 INFO mapreduce.Job:  map 62% reduce 20%
+19/07/08 21:50:47 INFO mapreduce.Job:  map 63% reduce 20%
+19/07/08 21:50:47 INFO mapreduce.Job:  map 60% reduce 19%
+19/07/08 21:50:49 INFO mapreduce.Job:  map 66% reduce 21%
+19/07/08 21:50:51 INFO mapreduce.Job:  map 64% reduce 20%
+19/07/08 21:50:51 INFO mapreduce.Job:  map 61% reduce 19%
+19/07/08 21:50:53 INFO mapreduce.Job:  map 63% reduce 20%
+19/07/08 21:50:53 INFO mapreduce.Job:  map 64% reduce 21%
+19/07/08 21:50:53 INFO mapreduce.Job:  map 67% reduce 21%
+19/07/08 21:50:54 INFO mapreduce.Job:  map 61% reduce 20%
+19/07/08 21:50:55 INFO mapreduce.Job:  map 65% reduce 21%
+19/07/08 21:50:55 INFO mapreduce.Job:  map 67% reduce 22%
+19/07/08 21:50:56 INFO mapreduce.Job:  map 64% reduce 20%
+19/07/08 21:50:56 INFO mapreduce.Job:  map 62% reduce 20%
+19/07/08 21:50:57 INFO mapreduce.Job:  map 68% reduce 22%
+19/07/08 21:51:00 INFO mapreduce.Job:  map 66% reduce 21%
+19/07/08 21:51:00 INFO mapreduce.Job:  map 63% reduce 20%
+19/07/08 21:51:02 INFO mapreduce.Job:  map 65% reduce 21%
+19/07/08 21:51:02 INFO mapreduce.Job:  map 69% reduce 22%
+19/07/08 21:51:03 INFO mapreduce.Job:  map 67% reduce 21%
+19/07/08 21:51:04 INFO mapreduce.Job:  map 64% reduce 20%
+19/07/08 21:51:05 INFO mapreduce.Job:  map 66% reduce 21%
+19/07/08 21:51:05 INFO mapreduce.Job:  map 67% reduce 22%
+19/07/08 21:51:05 INFO mapreduce.Job:  map 64% reduce 21%
+19/07/08 21:51:06 INFO mapreduce.Job:  map 68% reduce 22%
+19/07/08 21:51:07 INFO mapreduce.Job:  map 70% reduce 22%
+19/07/08 21:51:09 INFO mapreduce.Job:  map 65% reduce 21%
+19/07/08 21:51:10 INFO mapreduce.Job:  map 67% reduce 21%
+19/07/08 21:51:11 INFO mapreduce.Job:  map 69% reduce 22%
+19/07/08 21:51:11 INFO mapreduce.Job:  map 71% reduce 22%
+19/07/08 21:51:12 INFO mapreduce.Job:  map 72% reduce 22%
+19/07/08 21:51:13 INFO mapreduce.Job:  map 68% reduce 21%
+19/07/08 21:51:13 INFO mapreduce.Job:  map 66% reduce 21%
+19/07/08 21:51:14 INFO mapreduce.Job:  map 72% reduce 23%
+19/07/08 21:51:14 INFO mapreduce.Job:  map 68% reduce 22%
+19/07/08 21:51:14 INFO mapreduce.Job:  map 70% reduce 22%
+19/07/08 21:51:16 INFO mapreduce.Job:  map 69% reduce 22%
+19/07/08 21:51:16 INFO mapreduce.Job:  map 67% reduce 21%
+19/07/08 21:51:17 INFO mapreduce.Job:  map 71% reduce 23%
+19/07/08 21:51:17 INFO mapreduce.Job:  map 67% reduce 22%
+19/07/08 21:51:19 INFO mapreduce.Job:  map 73% reduce 23%
+19/07/08 21:51:19 INFO mapreduce.Job:  map 70% reduce 22%
+19/07/08 21:51:22 INFO mapreduce.Job:  map 72% reduce 23%
+19/07/08 21:51:22 INFO mapreduce.Job:  map 68% reduce 22%
+19/07/08 21:51:23 INFO mapreduce.Job:  map 74% reduce 23%
+19/07/08 21:51:23 INFO mapreduce.Job:  map 71% reduce 22%
+19/07/08 21:51:25 INFO mapreduce.Job:  map 74% reduce 24%
+19/07/08 21:51:25 INFO mapreduce.Job:  map 71% reduce 23%
+19/07/08 21:51:25 INFO mapreduce.Job:  map 73% reduce 23%
+19/07/08 21:51:25 INFO mapreduce.Job:  map 69% reduce 22%
+19/07/08 21:51:26 INFO mapreduce.Job:  map 75% reduce 24%
+19/07/08 21:51:28 INFO mapreduce.Job:  map 76% reduce 24%
+19/07/08 21:51:29 INFO mapreduce.Job:  map 72% reduce 23%
+19/07/08 21:51:29 INFO mapreduce.Job:  map 73% reduce 24%
+19/07/08 21:51:29 INFO mapreduce.Job:  map 69% reduce 23%
+19/07/08 21:51:30 INFO mapreduce.Job:  map 77% reduce 24%
+19/07/08 21:51:30 INFO mapreduce.Job:  map 70% reduce 23%
+19/07/08 21:51:31 INFO mapreduce.Job:  map 78% reduce 25%
+19/07/08 21:51:31 INFO mapreduce.Job:  map 74% reduce 24%
+19/07/08 21:51:33 INFO mapreduce.Job:  map 79% reduce 25%
+19/07/08 21:51:34 INFO mapreduce.Job:  map 73% reduce 23%
+19/07/08 21:51:35 INFO mapreduce.Job:  map 81% reduce 25%
+19/07/08 21:51:36 INFO mapreduce.Job:  map 82% reduce 25%
+19/07/08 21:51:36 INFO mapreduce.Job:  map 75% reduce 24%
+19/07/08 21:51:36 INFO mapreduce.Job:  map 71% reduce 23%
+19/07/08 21:51:37 INFO mapreduce.Job:  map 73% reduce 24%
+19/07/08 21:51:38 INFO mapreduce.Job:  map 84% reduce 25%
+19/07/08 21:51:39 INFO mapreduce.Job:  map 74% reduce 24%
+19/07/08 21:51:40 INFO mapreduce.Job:  map 85% reduce 25%
+19/07/08 21:51:41 INFO mapreduce.Job:  map 87% reduce 25%
+19/07/08 21:51:41 INFO mapreduce.Job:  map 75% reduce 25%
+19/07/08 21:51:41 INFO mapreduce.Job:  map 71% reduce 24%
+19/07/08 21:51:43 INFO mapreduce.Job:  map 88% reduce 26%
+19/07/08 21:51:43 INFO mapreduce.Job:  map 76% reduce 25%
+19/07/08 21:51:43 INFO mapreduce.Job:  map 72% reduce 24%
+19/07/08 21:51:44 INFO mapreduce.Job:  map 90% reduce 26%
+19/07/08 21:51:47 INFO mapreduce.Job:  map 92% reduce 26%
+19/07/08 21:51:48 INFO mapreduce.Job:  map 94% reduce 26%
+--------------------[2]-----------------------------
+19/07/08 21:51:49 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/07/08 21:51:49 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/07/08 21:51:49 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/07/08 21:51:49 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/07/08 21:51:50 INFO client.RMProxy: Connecting to ResourceManager at yarn-master-0.yarn-service.yarn/10.244.1.119:8032
+19/07/08 21:51:50 INFO client.RMProxy: Connecting to ResourceManager at yarn-master-0.yarn-service.yarn/10.244.1.119:8032
+19/07/08 21:51:50 INFO client.AHSProxy: Connecting to Application History server at /0.0.0.0:10200
+19/07/08 21:51:50 INFO client.RMProxy: Connecting to ResourceManager at yarn-master-0.yarn-service.yarn/10.244.1.119:8032
+19/07/08 21:51:50 INFO client.RMProxy: Connecting to ResourceManager at yarn-master-0.yarn-service.yarn/10.244.1.119:8032
+19/07/08 21:51:50 INFO client.AHSProxy: Connecting to Application History server at /0.0.0.0:10200
+19/07/08 21:51:50 INFO client.AHSProxy: Connecting to Application History server at /0.0.0.0:10200
+19/07/08 21:51:51 INFO client.AHSProxy: Connecting to Application History server at /0.0.0.0:10200
+19/07/08 21:51:51 INFO input.FileInputFormat: Total input files to process : 1
+19/07/08 21:51:51 INFO input.FileInputFormat: Total input files to process : 1
+19/07/08 21:51:51 INFO input.FileInputFormat: Total input files to process : 1
+19/07/08 21:51:51 INFO input.FileInputFormat: Total input files to process : 1
+19/07/08 21:51:51 INFO mapreduce.JobSubmitter: number of splits:153
+19/07/08 21:51:51 INFO mapreduce.JobSubmitter: number of splits:153
+19/07/08 21:51:51 INFO Configuration.deprecation: yarn.resourcemanager.system-metrics-publisher.enabled is deprecated. Instead, use yarn.system-metrics-publisher.enabled
+19/07/08 21:51:51 INFO mapreduce.JobSubmitter: number of splits:153
+19/07/08 21:51:51 INFO mapreduce.JobSubmitter: number of splits:153
+19/07/08 21:51:51 INFO Configuration.deprecation: yarn.resourcemanager.system-metrics-publisher.enabled is deprecated. Instead, use yarn.system-metrics-publisher.enabled
+19/07/08 21:51:52 INFO Configuration.deprecation: yarn.resourcemanager.system-metrics-publisher.enabled is deprecated. Instead, use yarn.system-metrics-publisher.enabled
+19/07/08 21:51:52 INFO Configuration.deprecation: yarn.resourcemanager.system-metrics-publisher.enabled is deprecated. Instead, use yarn.system-metrics-publisher.enabled
+19/07/08 21:51:52 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1562621358074_0016
+19/07/08 21:51:52 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1562621358074_0017
+19/07/08 21:51:52 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1562621358074_0015
+19/07/08 21:51:52 INFO impl.YarnClientImpl: Submitted application application_1562621358074_0016
+19/07/08 21:51:52 INFO mapreduce.Job: The url to track the job: http://yarn-master-0.yarn-service.yarn.svc.cluster.local:8088/proxy/application_1562621358074_0016/
+19/07/08 21:51:52 INFO mapreduce.Job: Running job: job_1562621358074_0016
+19/07/08 21:51:52 INFO impl.YarnClientImpl: Submitted application application_1562621358074_0017
+19/07/08 21:51:52 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1562621358074_0014
+19/07/08 21:51:52 INFO mapreduce.Job: The url to track the job: http://yarn-master-0.yarn-service.yarn.svc.cluster.local:8088/proxy/application_1562621358074_0017/
+19/07/08 21:51:52 INFO mapreduce.Job: Running job: job_1562621358074_0017
+19/07/08 21:51:52 INFO impl.YarnClientImpl: Submitted application application_1562621358074_0015
+19/07/08 21:51:52 INFO mapreduce.Job: The url to track the job: http://yarn-master-0.yarn-service.yarn.svc.cluster.local:8088/proxy/application_1562621358074_0015/
+19/07/08 21:51:52 INFO mapreduce.Job: Running job: job_1562621358074_0015
+19/07/08 21:51:52 INFO impl.YarnClientImpl: Submitted application application_1562621358074_0014
+19/07/08 21:51:52 INFO mapreduce.Job: The url to track the job: http://yarn-master-0.yarn-service.yarn.svc.cluster.local:8088/proxy/application_1562621358074_0014/
+19/07/08 21:51:52 INFO mapreduce.Job: Running job: job_1562621358074_0014
+./run-wordcount.sh: line 20: 22856 Killed                  nohup yarn jar $MAPRED_EXAMPLES wordcount /wordcount/input/20G-file.txt /wordcount/output/wc_$(date +%s)
+./run-wordcount.sh: line 20: 22857 Killed                  nohup yarn jar $MAPRED_EXAMPLES wordcount /wordcount/input/20G-file.txt /wordcount/output/wc_$(date +%s)
+./run-wordcount.sh: line 20: 22861 Killed                  nohup yarn jar $MAPRED_EXAMPLES wordcount /wordcount/input/20G-file.txt /wordcount/output/wc_$(date +%s)
+./run-wordcount.sh: line 20: 22858 Killed                  nohup yarn jar $MAPRED_EXAMPLES wordcount /wordcount/input/20G-file.txt /wordcount/output/wc_$(date +%s)
+--------------------[3]-----------------------------
+19/07/08 21:52:02 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/07/08 21:52:02 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/07/08 21:52:02 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/07/08 21:52:02 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+19/07/08 21:52:03 INFO client.RMProxy: Connecting to ResourceManager at yarn-master-0.yarn-service.yarn/10.244.1.119:8032
+19/07/08 21:52:03 INFO client.RMProxy: Connecting to ResourceManager at yarn-master-0.yarn-service.yarn/10.244.1.119:8032
+19/07/08 21:52:03 INFO client.RMProxy: Connecting to ResourceManager at yarn-master-0.yarn-service.yarn/10.244.1.119:8032
+19/07/08 21:52:03 INFO client.RMProxy: Connecting to ResourceManager at yarn-master-0.yarn-service.yarn/10.244.1.119:8032
+19/07/08 21:52:03 INFO client.AHSProxy: Connecting to Application History server at /0.0.0.0:10200
+19/07/08 21:52:03 INFO client.AHSProxy: Connecting to Application History server at /0.0.0.0:10200
+19/07/08 21:52:03 INFO client.AHSProxy: Connecting to Application History server at /0.0.0.0:10200
+19/07/08 21:52:03 INFO client.AHSProxy: Connecting to Application History server at /0.0.0.0:10200
+19/07/08 21:52:04 INFO input.FileInputFormat: Total input files to process : 1
+19/07/08 21:52:04 INFO input.FileInputFormat: Total input files to process : 1
+19/07/08 21:52:04 INFO input.FileInputFormat: Total input files to process : 1
+19/07/08 21:52:04 INFO mapreduce.JobSubmitter: number of splits:153
+19/07/08 21:52:04 INFO input.FileInputFormat: Total input files to process : 1
+19/07/08 21:52:04 INFO Configuration.deprecation: yarn.resourcemanager.system-metrics-publisher.enabled is deprecated. Instead, use yarn.system-metrics-publisher.enabled
+19/07/08 21:52:04 INFO mapreduce.JobSubmitter: number of splits:153
+19/07/08 21:52:04 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1562621358074_0019
+19/07/08 21:52:04 INFO Configuration.deprecation: yarn.resourcemanager.system-metrics-publisher.enabled is deprecated. Instead, use yarn.system-metrics-publisher.enabled
+19/07/08 21:52:05 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1562621358074_0020
+19/07/08 21:52:05 INFO mapreduce.JobSubmitter: number of splits:153
+19/07/08 21:52:05 INFO impl.YarnClientImpl: Submitted application application_1562621358074_0019
+19/07/08 21:52:05 INFO mapreduce.Job: The url to track the job: http://yarn-master-0.yarn-service.yarn.svc.cluster.local:8088/proxy/application_1562621358074_0019/
+19/07/08 21:52:05 INFO mapreduce.Job: Running job: job_1562621358074_0019
+19/07/08 21:52:05 INFO Configuration.deprecation: yarn.resourcemanager.system-metrics-publisher.enabled is deprecated. Instead, use yarn.system-metrics-publisher.enabled
+19/07/08 21:52:05 INFO mapreduce.JobSubmitter: number of splits:153
+19/07/08 21:52:05 INFO impl.YarnClientImpl: Submitted application application_1562621358074_0020
+19/07/08 21:52:05 INFO mapreduce.Job: The url to track the job: http://yarn-master-0.yarn-service.yarn.svc.cluster.local:8088/proxy/application_1562621358074_0020/
+19/07/08 21:52:05 INFO mapreduce.Job: Running job: job_1562621358074_0020
+19/07/08 21:52:05 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1562621358074_0018
+19/07/08 21:52:05 INFO Configuration.deprecation: yarn.resourcemanager.system-metrics-publisher.enabled is deprecated. Instead, use yarn.system-metrics-publisher.enabled
+19/07/08 21:52:05 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1562621358074_0021
+19/07/08 21:52:05 INFO impl.YarnClientImpl: Submitted application application_1562621358074_0018
+19/07/08 21:52:05 INFO mapreduce.Job: The url to track the job: http://yarn-master-0.yarn-service.yarn.svc.cluster.local:8088/proxy/application_1562621358074_0018/
+19/07/08 21:52:05 INFO mapreduce.Job: Running job: job_1562621358074_0018
+19/07/08 21:52:05 INFO impl.YarnClientImpl: Submitted application application_1562621358074_0021
+19/07/08 21:52:05 INFO mapreduce.Job: The url to track the job: http://yarn-master-0.yarn-service.yarn.svc.cluster.local:8088/proxy/application_1562621358074_0021/
+19/07/08 21:52:05 INFO mapreduce.Job: Running job: job_1562621358074_0021

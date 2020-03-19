@@ -1,0 +1,69 @@
+---
+#hadoop (yarn/hdfs) master service
+kind: Service
+apiVersion: v1
+metadata:
+  name: hdfs-service
+  namespace: hdfs
+  labels:
+    app: hdfs
+spec:
+  selector:
+    app: hdfs
+  ports: #Hadoop port http://fibrevillage.com/storage/637-hadoop-default-ports-reference
+    - name: nn
+      protocol: TCP
+      port: 8020
+    - name: dn-web
+      protocol: TCP
+      port: 8042
+    - name: nn-rpc
+      protocol: TCP
+      port: 9000
+    - name: dn
+      protocol: TCP
+      port: 50010
+    - name: dn-2
+      protocol: TCP
+      port: 50020
+    - name: nn-web #expose web interface on port 80 (9870->80)
+      protocol: TCP
+      port: 50070
+    - name: s-nn
+      protocol: TCP
+      port: 50090
+---
+#hadoop (yarn/hdfs) master service
+kind: Service
+apiVersion: v1
+metadata:
+  name: hdfs-master-service
+  namespace: hdfs
+  labels:
+    app: hdfs
+    hdfs: master
+spec:
+  selector:
+    hdfs: master
+  ports: #Hadoop port http://fibrevillage.com/storage/637-hadoop-default-ports-reference
+    - name: nn
+      protocol: TCP
+      port: 8020
+    - name: dn-web
+      protocol: TCP
+      port: 8042
+    - name: nn-rpc
+      protocol: TCP
+      port: 9000
+    - name: dn
+      protocol: TCP
+      port: 50010
+    - name: dn-2
+      protocol: TCP
+      port: 50020
+    - name: nn-web #expose web interface on port 80 (9870->80)
+      protocol: TCP
+      port: 50070
+    - name: s-nn
+      protocol: TCP
+      port: 50090

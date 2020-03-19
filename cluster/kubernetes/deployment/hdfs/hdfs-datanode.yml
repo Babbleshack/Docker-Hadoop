@@ -1,0 +1,51 @@
+---
+# stateful set
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: hdfs-datanode
+  namespace: hdfs
+  labels:
+    app: hdfs
+    hdfs: datanode
+spec:
+  serviceName: hdfs-service
+  replicas: 60
+  selector:
+    matchLabels:
+      hdfs: datanode
+  template:
+    metadata:
+      namespace: hdfs
+      labels:
+        app: hdfs
+        hdfs: datanode
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - hdfs
+              topologyKey: "kubernetes.io/hostname"
+      nodeSelector:
+        hdfs: worker
+      containers:
+        - name: hdfs-datanode
+          image: babbleshack/hadoop:base
+          imagePullPolicy: Always
+          command: [ "/bin/bash" ]
+          args: [ "/opt/init_container.d/start_datanode.sh" ]
+          ports:
+            - name: dn
+              containerPort: 50010
+            - name: dn-2
+              containerPort: 50020
+            - name: dn-web
+              containerPort: 50075
+            - name: ssh
+              containerPort: 22

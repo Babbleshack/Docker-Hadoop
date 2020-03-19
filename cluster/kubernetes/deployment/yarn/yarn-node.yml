@@ -1,0 +1,73 @@
+---
+# stateful set
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: yarn-worker
+  namespace: yarn
+  labels:
+    app: yarn
+    yarn: worker
+spec:
+  serviceName: yarn-service
+  replicas: 60
+  selector:
+    matchLabels:
+      yarn: worker
+  template:
+    metadata:
+      namespace: hdfs
+      labels:
+        app: yarn
+        yarn: worker
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: worker
+                  operator: In
+                  values:
+                  - yarn
+              topologyKey: "kubernetes.io/hostname"
+      nodeSelector:
+        yarn: worker
+      containers:
+        - name: yarn-worker
+          image: babbleshack/hadoop:3-1-2-slots
+          imagePullPolicy: Always
+          command: [ "/bin/bash" ]
+          args: [ "/opt/init_container.d/wait_for_master.sh" ]
+          ports:
+            - name: rm-sched
+              containerPort: 8030
+            - name: rt
+              containerPort: 8031
+            - name: rm
+              containerPort: 8032
+            - name: rm-admin
+              containerPort: 8033
+            - name: amrmproxy
+              containerPort: 8049
+            - name: nm
+              containerPort: 8040
+            - name: nm-2
+              containerPort: 8042
+            - name: job-his-rpc
+              containerPort: 10020
+            - name: job-his
+              containerPort: 10033
+            - name: nm-3
+              containerPort: 13562
+            - name: ssh
+              containerPort: 22
+            - name: timeline-serv
+              containerPort: 8188
+            - name: timeline-rpc
+              containerPort: 10200
+            - name: s-port
+              containerPort: 13562
+
+

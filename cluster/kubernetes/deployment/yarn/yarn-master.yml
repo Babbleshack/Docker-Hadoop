@@ -1,0 +1,74 @@
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: yarn-master
+  namespace: yarn
+  labels:
+    app: yarn
+    yarn: master
+spec:
+  serviceName: yarn-service
+  replicas: 1 
+  selector:
+    matchLabels:
+      yarn: master
+  template: #pod template .spec.template
+    metadata:
+      namespace: yarn
+      labels:
+        app: yarn
+        yarn: master
+    spec:
+      hostname: yarn-master-0.yarn-service
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - yarn
+              topologyKey: "kubernetes.io/hostname"
+      nodeSelector:
+        yarn: master
+      volumes:
+        - name: worker-nodes-config
+          configMap:
+            name: yarn-workers-configmap
+      containers:
+        - name: yarn-master
+          image: babbleshack/hadoop:3-1-2-slots
+          imagePullPolicy: Always
+          command: [ "/bin/bash" ]
+          args: [ "/opt/init_container.d/start_yarn.sh" ]
+          volumeMounts:
+            - name: worker-nodes-config
+              mountPath: /opt/hadoop-kuber-conf
+          ports:
+            - name: rm-sched
+              containerPort: 8030
+            - name: rt
+              containerPort: 8031
+            - name: rm
+              containerPort: 8032
+            - name: rm-admin
+              containerPort: 8033
+            - name: rmam-proxy
+              containerPort: 8049
+            - name: rm-admin-http
+              containerPort: 8088
+            - name: job-his-rpc
+              containerPort: 10020
+            - name: job-his
+              containerPort: 10033
+            - name: job-his-ui
+              containerPort: 19888
+            - name: webapp
+              containerPort: 8088
+            - name: timeline-serv
+              containerPort: 8188
+            - name: timeline-rpc
+              containerPort: 10200

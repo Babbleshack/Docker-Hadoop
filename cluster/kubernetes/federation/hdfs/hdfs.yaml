@@ -1,0 +1,183 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hdfs
+---
+#hadoop (yarn/hdfs) master service
+kind: Service
+apiVersion: v1
+metadata:
+  name: hdfs-service
+  namespace: hdfs
+  labels:
+    app: hdfs
+spec:
+  selector:
+    app: hdfs
+  ports: #Hadoop port http://fibrevillage.com/storage/637-hadoop-default-ports-reference
+    - name: nn
+      protocol: TCP
+      port: 8020
+    - name: dn-web
+      protocol: TCP
+      port: 8042
+    - name: nn-rpc
+      protocol: TCP
+      port: 9000
+    - name: dn
+      protocol: TCP
+      port: 50010
+    - name: dn-2
+      protocol: TCP
+      port: 50020
+    - name: nn-web #expose web interface on port 80 (9870->80)
+      protocol: TCP
+      port: 50070
+    - name: s-nn
+      protocol: TCP
+      port: 50090
+---
+#hadoop (yarn/hdfs) master service
+kind: Service
+apiVersion: v1
+metadata:
+  name: hdfs-master-service
+  namespace: hdfs
+  labels:
+    app: hdfs
+    hdfs: master
+spec:
+  selector:
+    hdfs: master
+  ports: #Hadoop port http://fibrevillage.com/storage/637-hadoop-default-ports-reference
+    - name: nn
+      protocol: TCP
+      port: 8020
+    - name: dn-web
+      protocol: TCP
+      port: 8042
+    - name: nn-rpc
+      protocol: TCP
+      port: 9000
+    - name: dn
+      protocol: TCP
+      port: 50010
+    - name: dn-2
+      protocol: TCP
+      port: 50020
+    - name: nn-web #expose web interface on port 80 (9870->80)
+      protocol: TCP
+      port: 50070
+    - name: s-nn
+      protocol: TCP
+      port: 50090
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: hdfs-master
+  namespace: hdfs
+  labels:
+    app: hdfs
+    hdfs: master
+spec:
+  serviceName: hdfs-service
+  replicas: 1 
+  selector:
+    matchLabels:
+      hdfs: master
+  template: #pod template .spec.template
+    metadata:
+      namespace: hdfs
+      labels:
+        app: hdfs
+        hdfs: master
+    spec:
+      hostname: hdfs-master-0
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - hdfs
+              topologyKey: "kubernetes.io/hostname"
+      nodeSelector:
+        role: master
+      containers:
+        - name: hdfs-master
+          image: babbleshack/hadoop:3-2-1-federation
+          imagePullPolicy: Always
+          command: [ "/bin/bash" ]
+          args: [ "/opt/init_container.d/start_hdfs.sh" ]
+          ports:
+            - name: nn-rpc
+              containerPort: 9000
+            - name: nn-web
+              containerPort: 50070
+            - name: s-nn
+              containerPort: 50090
+          env:
+            #TODO: remove and replace with ID
+            - name: CLUSTER_NAME
+              value: hdfs-k8s-1
+            - name: CLUSTER_ID
+              value: hadoop-k8s-1
+---
+# stateful set
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: hdfs-datanode
+  namespace: hdfs
+  labels:
+    app: hdfs
+    hdfs: datanode
+spec:
+  serviceName: hdfs-service
+  replicas: 10
+  selector:
+    matchLabels:
+      hdfs: datanode
+  template:
+    metadata:
+      namespace: hdfs
+      labels:
+        app: hdfs
+        hdfs: datanode
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - hdfs
+              topologyKey: "kubernetes.io/hostname"
+      nodeSelector:
+        role: worker
+      containers:
+        - name: hdfs-datanode
+          image: babbleshack/hadoop:3-2-1-federation
+          imagePullPolicy: Always
+          command: [ "/bin/bash" ]
+          args: [ "/opt/init_container.d/start_datanode.sh" ]
+          ports:
+            - name: dn
+              containerPort: 50010
+            - name: dn-2
+              containerPort: 50020
+            - name: dn-web
+              containerPort: 50075
+            - name: ssh
+              containerPort: 22
+          env:
+            - name: CLUSTER_ID
+              value: hadoop-k8s-1
