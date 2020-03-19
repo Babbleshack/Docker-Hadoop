@@ -113,7 +113,7 @@ spec:
           image: babbleshack/hadoop:3-2-1-federation
           imagePullPolicy: Always
           command: [ "/bin/bash" ]
-          args: [ "/opt/init_container.d/start_hdfs.sh" ]
+          args: [ "/hadoop/scripts/startNamenode.sh" ]
           ports:
             - name: nn-rpc
               containerPort: 9000
@@ -168,7 +168,7 @@ spec:
           image: babbleshack/hadoop:3-2-1-federation
           imagePullPolicy: Always
           command: [ "/bin/bash" ]
-          args: [ "/opt/init_container.d/start_datanode.sh" ]
+          args: [ "/hadoop/scripts/startDatanode.sh" ]
           ports:
             - name: dn
               containerPort: 50010

@@ -22,8 +22,13 @@
     <value>hdfs://hdfs-master-0.hdfs-service.hdfs:9000</value>
   </property>
   <property>
+	  <!-- set http server to serve on legacy port to match kube service -->
+	  <name>dfs.namenode.http-address</name>
+	  <value>0.0.0.0:50070</value>
+  </property>
+  <property>
     <name>dfs.name.dir</name>
-    <value>file:///opt/hadoop/hdfs/master</value>
+    <value>file:///opt/hadoop/hdfs/namenode</value>
   </property>
   <property>
     <name>dfs.data.dir</name>

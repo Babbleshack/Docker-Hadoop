@@ -82,14 +82,17 @@ COPY ./files/init_scripts/* ${ENTRYPOINT_SCRIPT_DIR}/
 COPY ./files/ssh/ssh_config /etc/ssh/
 COPY ./files/scripts/* ${HELPER_SCRIPTS_DIR}/
 
+#Copy init_scripts to work dir
+RUN mkdir -pv /hadoop/scripts
+COPY ./files/init_scripts/* ${WORKDIR}/scripts/
+
 #Configure hadoop data dirs
 RUN mkdir -pv ${HADOOP_DATA_NODE_DATA} \
         && mkdir -pv ${HADOOP_NAME_NODE_DATA} \
         && mkdir -pv ${HADOOP_TEMPDIR} \
         && mkdir -pv ${ENTRYPOINT_SCRIPT_DIR}
 
-RUN mkdir -pv /hadoop/scripts
-COPY ./files/init_scripts/* ${WORKDIR}/scripts/
+#Set work dir
 WORKDIR /${WORKDIR} 
 
 ##############################
