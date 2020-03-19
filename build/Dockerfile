@@ -80,7 +80,7 @@ FROM base AS hadoop
 COPY ./files/hadoop/* ${HADOOP_HOME}/etc/hadoop/
 COPY ./files/init_scripts/* ${ENTRYPOINT_SCRIPT_DIR}/
 COPY ./files/ssh/ssh_config /etc/ssh/
-copy ./files/scripts/* ${HELPER_SCRIPTS_DIR}/
+COPY ./files/scripts/* ${HELPER_SCRIPTS_DIR}/
 
 #Configure hadoop data dirs
 RUN mkdir -pv ${HADOOP_DATA_NODE_DATA} \
