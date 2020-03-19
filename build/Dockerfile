@@ -55,19 +55,26 @@ RUN apt update && apt install -y \
 
 RUN pip3 install yarn_api_client 
 
+# Grab hadoop files
+RUN curl -L \
+	"http://mirror.ox.ac.uk/sites/rsync.apache.org/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz" \
+	-o /tmp/hadoop.tar.gz \
+	&& tar xzfv /tmp/hadoop.tar.gz -C /tmp/ \
+	&& rm -rf /tmp/hadoop.tar.gz \
+	&& mv -v /tmp/hadoop-${HADOOP_VERSION} ${HADOOP_HOME} \
+	&& mkdir -pv ${ENTRYPOINT_SCRIPT_DIR} \
+	&& mkdir -pv ${HELPER_SCRIPTS_DIR}
+
 # passwordless ssh, update to use pregenerated keys.
 RUN rm -rf /etc/ssh/ssh_host_dsa_key && ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key 
 RUN rm -rf /etc/ssh/ssh_host_rsa_key && ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key 
 RUN rm -rf /root/.ssh/id_rsa && ssh-keygen -q -N "" -t rsa -f /root/.ssh/id_rsa 
 RUN cp -f /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
 
-#http://mirror.ox.ac.uk/sites/rsync.apache.org/hadoop/common/hadoop-2.9.2/hadoop-2.9.2.tar.gz
-#http://mirrors.ukfast.co.uk/sites/ftp.apache.org/hadoop/common/hadoop-2.9.2/hadoop-2.9.2.tar.gz
-RUN curl -L http://mirrors.ukfast.co.uk/sites/ftp.apache.org/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz -o /tmp/hadoop.tar.gz \
-    && tar xzfv /tmp/hadoop.tar.gz -C /tmp/ \
-    && mv -v /tmp/hadoop-${HADOOP_VERSION} ${HADOOP_HOME} \
-    && mkdir -pv ${ENTRYPOINT_SCRIPT_DIR} \
-    && mkdir -pv ${HELPER_SCRIPTS_DIR}
+###########
+##Configure hadoop
+###########
+FROM base AS hadoop
 
 #copy hadoop files
 COPY ./files/hadoop/* ${HADOOP_HOME}/etc/hadoop/
@@ -88,7 +95,7 @@ WORKDIR /${WORKDIR}
 ##############################
 ##FEDERATED IMAGE
 ##############################
-FROM base AS federated
+FROM hadoop AS federated
 
 RUN mkdir -pv federation/client
 COPY ./files/federated_confs/client/* /${WORKDIR}/federation/client
