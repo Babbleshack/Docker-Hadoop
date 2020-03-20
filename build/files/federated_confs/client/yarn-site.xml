@@ -30,8 +30,8 @@
     <value>true</value>
   </property>
   <property>
-    <name>yarn.resourcemanager.cluser-id</name>
-    <value>CLUSTER-ID-VALUE</value>
+    <name>yarn.resourcemanager.cluster-id</name>
+    <value><!--CLUSTER-ID-VALUE--></value>
   </property>
   <!--Federated State Store Conf 
         Configured for zookeper backing store

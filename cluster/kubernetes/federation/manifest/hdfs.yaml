@@ -124,7 +124,7 @@ spec:
           env:
             #TODO: remove and replace with ID
             - name: CLUSTER_NAME
-              value: hdfs-k8s-1
+              value: hadoop-k8s-1
             - name: CLUSTER_ID
               value: hadoop-k8s-1
 ---

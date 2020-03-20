@@ -41,13 +41,13 @@
     <value>true</value>
   </property>
   <property>
-    <name>yarn.resourcemanager.cluser-id</name>
-    <value>CLUSTER-ID-VALUE</value>
+    <name>yarn.resourcemanager.cluster-id</name>
+    <value><!--CLUSTER-ID-VALUE--></value>
   </property>
   <!-- Resource Manager Only -->
   <property>
-    <name>yarn.federation.epoch</name>
-    <value>FEDERATION-EPOCH-VALUE</value>
+    <name>yarn.resourcemanager.epoch</name>
+    <value><!--RESOURCEMANAGER-EPOCH-VALUE--></value>
   </property>
   <!-- Defaults to 60 seconds, but turned down so we can keep cluster consumption relevant -->
   <property>
