@@ -106,6 +106,8 @@ RUN mkdir -pv federation/client federation/router && cp -rf ${HADOOP_CONF_DIR}/*
 COPY ./files/federated_confs/client/* /${WORKDIR}/federation/client/
 COPY ./files/federated_confs/node/yarn-site.xml /${WORKDIR}/federation/node/yarn-site.xml
 COPY ./files/federated_confs/general/yarn-site.xml ${HADOOP_HOME}/etc/hadoop/yarn-site.xml
+#prepare router confs
+RUN cp -rf ${HADOOP_CONF_DIR}/* ${WORKDIR}/federation/router/
 COPY ./files/federated_confs/router/yarn-site.xml ${WORKDIR}/federation/router/yarn-site.xml
 
 ###########################

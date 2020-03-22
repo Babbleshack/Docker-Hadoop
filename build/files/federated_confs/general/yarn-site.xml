@@ -91,6 +91,19 @@
     <name>yarn.resourcemanager.ha.automatic-failover.embedded</name>
     <value>false</value>
   </property>
+  <!--nodemanager confs-->
+  <property>
+    <name>yarn.nodemanager.amrmproxy.enabled</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>yarn.nodemanager.amrmproxy.ha.enable</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>yarn.nodemanager.amrmproxy.interceptor-class.pipeline</name>
+    <value>org.apache.hadoop.yarn.server.nodemanager.amrmproxy.FederationInterceptor</value>
+  </property>
 
   <!-- high availability -->
   <property>

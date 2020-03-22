@@ -18,7 +18,11 @@
 
   <property>
 	  <name>yarn.resourcemanager.address</name>
-	  <value>yarn-master-0.yarn-service.yarn-subcluster-a:8032</value>
+	  <value>yarn-master-0.yarn-service.yarn-subcluster-a:8050</value>
+  </property>
+  <property>
+	  <name>yarn.resourcemanager.scheduler.address</name>
+	  <value>yarn-master-0.yarn-service.yarn-subcluster-a:8049</value>
   </property>
   <property>
 	  <name>yarn.resourcemanager.hostname</name>
@@ -78,6 +82,19 @@
   <property>
     <name>yarn.resourcemanager.ha.automatic-failover.embedded</name>
     <value>false</value>
+  </property>
+  <!-- high availability -->
+  <property>
+	  <name>yarn.resourcemanager.ha.rm-ids</name>
+	  <value><!--CLUSTER-ID-VALUE--></value>
+  </property>
+  <property>
+	  <name>yarn.resourcemanager.hostname.<!--CLUSTER-ID-VALUE--></name>
+	  <value>yarn-master-0.yarn-service.<!--CLUSTER-ID-VALUE--></value>
+  </property>
+  <property>
+	  <name>yarn.resourcemanager.webapp.address.rm1</name>
+	  <value>yarn-master-0.yarn-service.<!--CLUSTER-ID-VALUE-->:8088</value>
   </property>
 
 
