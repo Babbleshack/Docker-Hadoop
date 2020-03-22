@@ -93,7 +93,7 @@
 	  <value>yarn-master-0.yarn-service.<!--CLUSTER-ID-VALUE--></value>
   </property>
   <property>
-	  <name>yarn.resourcemanager.webapp.address.rm1</name>
+	  <name>yarn.resourcemanager.webapp.address.<!--CLUSTER-ID-VALUE--></name>
 	  <value>yarn-master-0.yarn-service.<!--CLUSTER-ID-VALUE-->:8088</value>
   </property>
 

@@ -95,6 +95,19 @@
     <name>yarn.resourcemanager.ha.automatic-failover.embedded</name>
     <value>false</value>
   </property>
+  <!-- high availability -->
+  <property>
+	  <name>yarn.resourcemanager.ha.rm-ids</name>
+	  <value><!--CLUSTER-ID-VALUE--></value>
+  </property>
+  <property>
+	  <name>yarn.resourcemanager.hostname.<!--CLUSTER-ID-VALUE--></name>
+	  <value>yarn-master-0.yarn-service.<!--CLUSTER-ID-VALUE--></value>
+  </property>
+  <property>
+	  <name>yarn.resourcemanager.webapp.address.<!--CLUSTER-ID-VALUE--></name>
+	  <value>yarn-master-0.yarn-service.<!--CLUSTER-ID-VALUE-->:8088</value>
+  </property>
 
   <!-- Cluster Configuration -->
   <!-- Worker(memory)=8GB, Node(mem)=6GB, Container(mem)=[1,2]GB-->
