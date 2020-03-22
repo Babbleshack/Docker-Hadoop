@@ -1,0 +1,59 @@
+---
+#namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: zookeeper
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: zookeeper-service
+  namespace: zookeeper
+  labels:
+    app: zookeeper
+spec:
+  selector:
+    app: zookeeper
+  ports: #Hadoop port http://fibrevillage.com/storage/637-hadoop-default-ports-reference
+    - name: zookeper
+      protocol: TCP
+      port: 2182
+    - name: zookeper-web
+      protocol: TCP
+      port: 8080
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: zookeeper-master
+  namespace: zookeeper
+  labels:
+    app: zookeeper
+    zookeeper: master
+spec:
+  serviceName: zookeeper-service
+  replicas: 1 
+  selector:
+    matchLabels:
+      zookeeper: master
+      app: zookeeper
+  template: #pod template .spec.template
+    metadata:
+      namespace: zookeeper
+      labels:
+        app: zookeeper
+        zookeeper: master
+    spec:
+      hostname: zookeeper-master-0.zookeeper-service
+      nodeSelector:
+        role: master
+      containers:
+        - name: zookeper
+          image: zookeeper
+          ports:
+            - name: zookeper
+              containerPort: 2182
+          ports:
+            - name: zookeper-web
+              containerPort: 8080

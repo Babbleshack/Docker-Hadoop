@@ -108,6 +108,15 @@ spec:
     - name: tl-server
       protocol: TCP
       port: 8188
+    - name: router-clientrm
+      protocol: TCP
+      port: 8050
+    - name: router-webapp
+      protocol: TCP
+      port: 8089
+    - name: router-admin
+      protocol: TCP
+      port: 8052
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -152,7 +161,7 @@ spec:
           args: [ "/hadoop/scripts/startRM.sh" ]
           env:
             - name: CLUSTER_ID
-              value: hadoop-k8s-1
+              value: hadoop-subcluster-a
           ports:
             - name: rm-sched
               containerPort: 8030
@@ -178,6 +187,12 @@ spec:
               containerPort: 8188
             - name: timeline-rpc
               containerPort: 10200
+            - name: router-clientrm
+              containerPort: 8050
+            - name: router-webapp
+              containerPort: 8089
+            - name: router-admin
+              containerPort: 8052
 ---
 # stateful set
 apiVersion: apps/v1
@@ -222,7 +237,7 @@ spec:
           args: [ "/hadoop/scripts/startNM.sh" ]
           env:
             - name: CLUSTER_ID
-              value: hadoop-k8s-1
+              value: hadoop-subcluster-a
           ports:
             - name: rm-sched
               containerPort: 8030

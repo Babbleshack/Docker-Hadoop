@@ -17,7 +17,7 @@
   <!-- Client Specific -->
   <property>
     <name>yarn.resourcemanager.address</name>
-    <value>ROUTER-ADDRESS-VALUE</value>
+    <value>yarn-master-0.yarn-service.yarn-subcluster-a:8050</value>
   </property>
   <property>
     <name>yarn.resourcemanager.scheduler.address</name>
@@ -30,19 +30,23 @@
     <value>true</value>
   </property>
   <property>
+    <name>yarn.resourcemanager.ha.rm-ids</name>
+    <value>yarn-subcluster-a</value>
+  </property>
+  <property>
     <name>yarn.resourcemanager.cluster-id</name>
-    <value><!--CLUSTER-ID-VALUE--></value>
+    <value>yarn-subcluster-a</value>
   </property>
   <!--Federated State Store Conf 
         Configured for zookeper backing store
     -->
   <property>
     <name>yarn.federation.state-store.class</name>
-    <value>org.apache.hadoop.server.federation.store.impl.ZookeeperFederationStateStore</value>
+    <value>org.apache.hadoop.yarn.server.federation.store.impl.ZookeeperFederationStateStore</value>
   </property>
   <property>
     <name>hadoop.zk.address</name>
-    <value>ZOOKEEPER-ADDRESS-VALUE</value>
+    <value>zookeeper-master-0.zookeeper-service.zookeeper:2181</value>
   </property>
   <!-- Configure default federation polcies -->
   <property>

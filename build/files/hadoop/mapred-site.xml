@@ -50,4 +50,12 @@
     <name>mapreduce.reduce.env</name>
     <value>HADOOP_MAPRED_HOME=${HADOOP_HOME:-"/opt/hadoop"}</value>
   </property>
+  <property>
+    <name>yarn.app.mapreduce.am.job.client.port-range</name>
+    <value>50050-50059</value>
+  </property>
+  <property>
+    <name>yarn.app.mapreduce.am.webapp.port-range</name>
+    <value>55050-55059</value>
+  </property>
 </configuration>

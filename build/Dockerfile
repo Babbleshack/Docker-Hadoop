@@ -55,6 +55,8 @@ RUN apt update && apt install -y \
 
 RUN pip3 install yarn_api_client 
 
+
+	#"http://archive.apache.org/dist/hadoop/common/hadoop-3.1.2/hadoop-3.1.2.tar.gz" \
 # Grab hadoop files
 RUN curl -L \
 	"http://mirror.ox.ac.uk/sites/rsync.apache.org/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz" \
@@ -100,7 +102,16 @@ WORKDIR /${WORKDIR}
 ##############################
 FROM hadoop AS federated
 
-RUN mkdir -pv federation/client
-COPY ./files/federated_confs/client/* /${WORKDIR}/federation/client
-COPY ./files/federated_confs/node/* ${HADOOP_HOME}/etc/hadoop
+RUN mkdir -pv federation/client federation/router && cp -rf ${HADOOP_CONF_DIR}/* /${WORKDIR}/federation/client
+COPY ./files/federated_confs/client/* /${WORKDIR}/federation/client/
+COPY ./files/federated_confs/node/yarn-site.xml /${WORKDIR}/federation/node/yarn-site.xml
+COPY ./files/federated_confs/general/yarn-site.xml ${HADOOP_HOME}/etc/hadoop/yarn-site.xml
+COPY ./files/federated_confs/router/yarn-site.xml ${WORKDIR}/federation/router/yarn-site.xml
+
+###########################
+##EXPERIMENTATION
+##########################
+FROM hadoop AS experiment
+
+COPY ./files/experiment/yarn-site-simple.xml ${HADOOP_HOME}/etc/hadoop/yarn-site.xml
 

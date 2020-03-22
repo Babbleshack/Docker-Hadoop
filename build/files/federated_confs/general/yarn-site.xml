@@ -18,25 +18,28 @@
 
   <property>
 	  <name>yarn.resourcemanager.address</name>
-	  <value>yarn-master-0.yarn-service.yarn:8032</value>
+	  <value>yarn-master-0.yarn-service.<!--CLUSTER-ID-VALUE-->:8032</value>
   </property>
   <property>
 	  <name>yarn.resourcemanager.hostname</name>
-	  <value>yarn-master-0</value>
+	  <value>yarn-master-0.yarn-service.<!--CLUSTER-ID-VALUE--></value>
   </property>
   <property>
     <name>yarn.webapp.ui2.enable</name>
     <value>true</value>
   </property>
   <property>
+    <name>yarn.resourcemanager.webapp.address</name>
+    <value>0.0.0.0:8088</value>
+  </property>
+  <property>
 	  <name>yarn.resourcemanager.resource-tracker.address</name>
-	  <value>yarn-master-0.yarn-service.yarn:8031</value>
+	  <value>yarn-master-0.yarn-service.<!--CLUSTER-ID-VALUE-->:8031</value>
   </property>
   <property>
     <name>yarn.log-aggregation-enable</name>
     <value>true</value>
   </property>
-
   <!-- Federated Scheduling -->
   <property>
     <name>yarn.federation.enabled</name>
@@ -61,34 +64,46 @@
     -->
   <property>
     <name>yarn.federation.state-store.class</name>
-    <value>org.apache.hadoop.server.federation.store.impl.ZookeeperFederationStateStore</value>
+    <value>org.apache.hadoop.yarn.server.federation.store.impl.ZookeeperFederationStateStore</value>
   </property>
   <property>
     <name>hadoop.zk.address</name>
-    <value>ZOOKEEPER-ADDRESS-VALUE</value>
+    <value>zookeeper-master-0.zookeeper-service.zookeeper:2181</value>
   </property>
-  <!-- Configure default federation polcies -->
-  <property>
-    <name>yarn.federation.policy-manager</name>
-    <value>org.apache.hadoop.yarn.server.federation.policies.manager.LatencyAwarePolicyManager</value>
-  </property>
-  <!--Router Confs -->
-  <property>
-    <name>yarn.router.bind-host</name>
-    <value>0.0.0.0</value>
-  </property>
-  <property>
-    <name>yarn.router.clientrm.interceptor-class.pipeline</name>
-    <value>org.apache.hadoop.yarn.server.router.clientrm.FederationClientInterceptor</value>
-  </property>
-  <!--NodeManager Configurations -->
   <property>
     <name>yarn.nodemanager.amrmproxy.enabled</name>
-    <value>true</value>
+    <value>false</value>
   </property>
   <property>
     <name>yarn.nodemanager.amrmproxy.interceptor-class.pipeline</name>
     <value>org.apache.hadoop.yarn.server.nodemanager.amrmproxy.FederationInterceptor</value>
+  </property>
+  <!-- Explicitly disbale ha confs -->
+  <property>
+    <name>yarn.resourcemanager.ha.enabled</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>yarn.resourcemanager.ha.automatic-failover.enabled</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>yarn.resourcemanager.ha.automatic-failover.embedded</name>
+    <value>false</value>
+  </property>
+
+  <!-- high availability -->
+  <property>
+	  <name>yarn.resourcemanager.ha.rm-ids</name>
+	  <value><!--CLUSTER-ID-VALUE--></value>
+  </property>
+  <property>
+	  <name>yarn.resourcemanager.hostname.<!--CLUSTER-ID-VALUE--></name>
+	  <value>yarn-master-0.yarn-service.<!--CLUSTER-ID-VALUE--></value>
+  </property>
+  <property>
+	  <name>yarn.resourcemanager.webapp.address.rm1</name>
+	  <value>yarn-master-0.yarn-service.<!--CLUSTER-ID-VALUE-->:8088</value>
   </property>
 
 

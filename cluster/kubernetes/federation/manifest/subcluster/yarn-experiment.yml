@@ -1,0 +1,535 @@
+---
+#namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: yarn-experiment
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: yarn-service
+  namespace: yarn-experiment
+  labels:
+    app: yarn
+    yarn: master
+spec:
+  selector:
+    app: yarn
+  ports: #Hadoop port http://fibrevillage.com/storage/637-hadoop-default-ports-reference
+    - name: rm-scheduler
+      protocol: TCP
+      port: 8030
+    - name: res-tracker
+      protocol: TCP
+      port: 8031
+    - name: rm
+      protocol: TCP
+      port: 8032
+    - name: rm-admin
+      protocol: TCP
+      port: 8033
+    - name: rm-web
+      protocol: TCP
+      port: 8088
+    - name: rm-web-secure
+      protocol: TCP
+      port: 8090
+    - name: router-web
+      protocol: TCP
+      port: 8089
+    - name: router-web-s
+      protocol: TCP
+      port: 8091
+    - name: cache-admin
+      protocol: TCP
+      port: 8047
+    - name: cache-client
+      protocol: TCP
+      port: 8045
+    - name: cache-upload
+      protocol: TCP
+      port: 8046
+    - name: cache-web
+      protocol: TCP
+      port: 8788
+    - name: tl-service
+      protocol: TCP
+      port: 10200
+    - name: tl-web
+      protocol: TCP
+      port: 8188
+    - name: tl-web-secure
+      protocol: TCP
+      port: 8190
+    - name: mr-job-his
+      protocol: TCP
+      port: 10020
+    - name: mr-admin
+      protocol: TCP
+      port: 10033
+    - name: mr-web
+      protocol: TCP
+      port: 19888
+    - name: mr-web-s
+      protocol: TCP
+      port: 19890
+      #- name: nodemanager
+      #- protocol: TCP
+      #- port: 0
+    - name: nm-amrmproxy
+      protocol: TCP
+      port: 8049
+    - name: nm-collector
+      protocol: TCP
+      port: 8048
+    - name: nm-localizer
+      protocol: TCP
+      port: 8040
+    - name: nm-webapp
+      protocol: TCP
+      port: 8042
+    - name: nm-webapp-s
+      protocol: TCP
+      port: 8044
+    - name: mr-client-1
+      protocol: TCP
+      port: 50050
+    - name: mr-client-2
+      protocol: TCP
+      port: 50051
+    - name: mr-client-3
+      protocol: TCP
+      port: 50052
+    - name: mr-client-4
+      protocol: TCP
+      port: 50053
+    - name: mr-client-5
+      protocol: TCP
+      port: 50054
+    - name: mr-client-6
+      protocol: TCP
+      port: 50055
+    - name: mr-client-7
+      protocol: TCP
+      port: 50056
+    - name: mr-client-8
+      protocol: TCP
+      port: 50057
+    - name: mr-client-9
+      protocol: TCP
+      port: 50058
+    - name: mr-client-10
+      protocol: TCP
+      port: 50059
+    - name: mr-web-1
+      protocol: TCP
+      port: 55050
+    - name: mr-web-2
+      protocol: TCP
+      port: 55051
+    - name: mr-web-3
+      protocol: TCP
+      port: 55052
+    - name: mr-web-4
+      protocol: TCP
+      port: 55053
+    - name: mr-web-5
+      protocol: TCP
+      port: 55054
+    - name: mr-web-6
+      protocol: TCP
+      port: 55055
+    - name: mr-web-7
+      protocol: TCP
+      port: 55056
+    - name: mr-web-8
+      protocol: TCP
+      port: 55057
+    - name: mr-web-9
+      protocol: TCP
+      port: 55058
+    - name: mr-web-10
+      protocol: TCP
+      port: 55059
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: yarn-master-service
+  namespace: yarn-experiment
+  labels:
+    app: yarn
+    yarn: master
+spec:
+  selector:
+    yarn: master
+  ports: #Hadoop port http://fibrevillage.com/storage/637-hadoop-default-ports-reference
+    - name: rm-scheduler
+      protocol: TCP
+      port: 8030
+    - name: res-tracker
+      protocol: TCP
+      port: 8031
+    - name: rm
+      protocol: TCP
+      port: 8032
+    - name: rm-admin
+      protocol: TCP
+      port: 8033
+    - name: rm-web
+      protocol: TCP
+      port: 8088
+    - name: rm-web-secure
+      protocol: TCP
+      port: 8090
+    - name: router-web
+      protocol: TCP
+      port: 8089
+    - name: router-web-s
+      protocol: TCP
+      port: 8091
+    - name: cache-admin
+      protocol: TCP
+      port: 8047
+    - name: cache-client
+      protocol: TCP
+      port: 8045
+    - name: cache-upload
+      protocol: TCP
+      port: 8046
+    - name: cache-web
+      protocol: TCP
+      port: 8788
+    - name: tl-service
+      protocol: TCP
+      port: 10200
+    - name: tl-web
+      protocol: TCP
+      port: 8188
+    - name: tl-web-secure
+      protocol: TCP
+      port: 8190
+    - name: mr-job-his
+      protocol: TCP
+      port: 10020
+    - name: mr-admin
+      protocol: TCP
+      port: 10033
+    - name: mr-web
+      protocol: TCP
+      port: 19888
+    - name: mr-web-s
+      protocol: TCP
+      port: 19890
+    - name: mr-client-1
+      protocol: TCP
+      port: 50050
+    - name: mr-client-2
+      protocol: TCP
+      port: 50051
+    - name: mr-client-3
+      protocol: TCP
+      port: 50052
+    - name: mr-client-4
+      protocol: TCP
+      port: 50053
+    - name: mr-client-5
+      protocol: TCP
+      port: 50054
+    - name: mr-client-6
+      protocol: TCP
+      port: 50055
+    - name: mr-client-7
+      protocol: TCP
+      port: 50056
+    - name: mr-client-8
+      protocol: TCP
+      port: 50057
+    - name: mr-client-9
+      protocol: TCP
+      port: 50058
+    - name: mr-client-10
+      protocol: TCP
+      port: 50059
+    - name: mr-web-1
+      protocol: TCP
+      port: 55050
+    - name: mr-web-2
+      protocol: TCP
+      port: 55051
+    - name: mr-web-3
+      protocol: TCP
+      port: 55052
+    - name: mr-web-4
+      protocol: TCP
+      port: 55053
+    - name: mr-web-5
+      protocol: TCP
+      port: 55054
+    - name: mr-web-6
+      protocol: TCP
+      port: 55055
+    - name: mr-web-7
+      protocol: TCP
+      port: 55056
+    - name: mr-web-8
+      protocol: TCP
+      port: 55057
+    - name: mr-web-9
+      protocol: TCP
+      port: 55058
+    - name: mr-web-10
+      protocol: TCP
+      port: 55059
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: yarn-master
+  namespace: yarn-experiment
+  labels:
+    app: yarn
+    yarn: master
+spec:
+  serviceName: yarn-service
+  replicas: 1 
+  selector:
+    matchLabels:
+      yarn: master
+  template: #pod template .spec.template
+    metadata:
+      namespace: yarn-experiment
+      labels:
+        app: yarn
+        yarn: master
+    spec:
+      hostname: yarn-master-0.yarn-service
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - yarn
+              topologyKey: "kubernetes.io/hostname"
+      nodeSelector:
+        role: master
+      containers:
+        - name: yarn-master
+          image: babbleshack/hadoop:3-2-1-experiment
+          imagePullPolicy: Always
+          command: [ "/bin/bash" ]
+          args: [ "/hadoop/scripts/startRM.sh" ]
+          volumeMounts: 
+            - name: workers
+              mountPath: /workers
+          env:
+            - name: CLUSTER_ID
+              value: yarn-experiment
+          ports:
+          - name: rm-scheduler
+            containerPort: 8030
+          - name: res-tracker
+            containerPort: 8031
+          - name: rm
+            containerPort: 8032
+          - name: rm-admin
+            containerPort: 8033
+          - name: rm-web
+            containerPort: 8088
+          - name: rm-web-secure
+            containerPort: 8090
+          - name: router-web
+            containerPort: 8089
+          - name: router-web-s
+            containerPort: 8091
+          - name: cache-admin
+            containerPort: 8047
+          - name: cache-client
+            containerPort: 8045
+          - name: cache-upload
+            containerPort: 8046
+          - name: cache-web
+            containerPort: 8788
+          - name: tl-service
+            containerPort: 10200
+          - name: tl-web
+            containerPort: 8188
+          - name: tl-web-secure
+            containerPort: 8190
+          - name: mr-job-his
+            containerPort: 10020
+          - name: mr-admin
+            containerPort: 10033
+          - name: mr-web
+            containerPort: 19888
+          - name: mr-web-s
+            containerPort: 19890
+          - name: mr-client-1
+            containerPort: 50050
+          - name: mr-client-2
+            containerPort: 50051
+          - name: mr-client-3
+            containerPort: 50052
+          - name: mr-client-4
+            containerPort: 50053
+          - name: mr-client-5
+            containerPort: 50054
+          - name: mr-client-6
+            containerPort: 50055
+          - name: mr-client-7
+            containerPort: 50056
+          - name: mr-client-8
+            containerPort: 50057
+          - name: mr-client-9
+            containerPort: 50058
+          - name: mr-client-10
+            containerPort: 50059
+          - name: mr-web-1
+            containerPort: 55050
+          - name: mr-web-2
+            containerPort: 55051
+          - name: mr-web-3
+            containerPort: 55052
+          - name: mr-web-4
+            containerPort: 55053
+          - name: mr-web-5
+            containerPort: 55054
+          - name: mr-web-6
+            containerPort: 55055
+          - name: mr-web-7
+            containerPort: 55056
+          - name: mr-web-8
+            containerPort: 55057
+          - name: mr-web-9
+            containerPort: 55058
+          - name: mr-web-10
+            containerPort: 55059
+      volumes:
+        - name: workers
+          configMap:
+            name: workers
+---
+# stateful set
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: yarn-worker
+  namespace: yarn-experiment
+  labels:
+    app: yarn
+    yarn: worker
+spec:
+  serviceName: yarn-service
+  replicas: 10
+  selector:
+    matchLabels:
+      yarn: worker
+  template:
+    metadata:
+      namespace: yarn-experiment
+      labels:
+        app: yarn
+        yarn: worker
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: worker
+                  operator: In
+                  values:
+                  - yarn
+              topologyKey: "kubernetes.io/hostname"
+      nodeSelector:
+        role: worker
+      containers:
+        - name: yarn-worker
+          image: babbleshack/hadoop:3-2-1-experiment
+          imagePullPolicy: Always
+          command: [ "/bin/bash" ]
+          args: [ "/hadoop/scripts/startNM.sh" ]
+          env:
+            - name: CLUSTER_ID
+              value: yarn-experiment
+            - name: PASSIVE_MODE
+              value: "true"
+          ports:
+            - name: cache-admin
+              containerPort: 8047
+            - name: cache-client
+              containerPort: 8045
+            - name: cache-upload
+              containerPort: 8046
+            - name: cache-web
+              containerPort: 8788
+            - name: timeline
+              containerPort: 10200
+            - name: mapred-admin
+              containerPort: 10033
+              #- name: nodemanager
+              #- containerPort: 0
+            - name: nm-amrmproxy
+              containerPort: 8049
+            - name: nm-collector
+              containerPort: 8048
+            - name: nm-localizer
+              containerPort: 8040
+            - name: nm-webapp
+              containerPort: 8042
+            - name: nm-webapp-s
+              containerPort: 8044
+            - name: mr-job-his
+              containerPort: 10020
+            - name: mr-admin
+              containerPort: 10033
+            - name: mr-web
+              containerPort: 19888
+            - name: mr-web-s
+              containerPort: 19890
+            - name: mr-client-1
+              containerPort: 50050
+            - name: mr-client-2
+              containerPort: 50051
+            - name: mr-client-3
+              containerPort: 50052
+            - name: mr-client-4
+              containerPort: 50053
+            - name: mr-client-5
+              containerPort: 50054
+            - name: mr-client-6
+              containerPort: 50055
+            - name: mr-client-7
+              containerPort: 50056
+            - name: mr-client-8
+              containerPort: 50057
+            - name: mr-client-9
+              containerPort: 50058
+            - name: mr-client-10
+              containerPort: 50059
+            - name: mr-web-1
+              containerPort: 55050
+            - name: mr-web-2
+              containerPort: 55051
+            - name: mr-web-3
+              containerPort: 55052
+            - name: mr-web-4
+              containerPort: 55053
+            - name: mr-web-5
+              containerPort: 55054
+            - name: mr-web-6
+              containerPort: 55055
+            - name: mr-web-7
+              containerPort: 55056
+            - name: mr-web-8
+              containerPort: 55057
+            - name: mr-web-9
+              containerPort: 55058
+            - name: mr-web-10
+              containerPort: 55059
