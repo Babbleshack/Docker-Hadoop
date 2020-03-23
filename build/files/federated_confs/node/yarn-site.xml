@@ -76,7 +76,7 @@
   </property>
   <property>
     <name>yarn.nodemanager.amrmproxy.ha.enable</name>
-    <value>false</value>
+    <value>true</value>
   </property>
   <property>
     <name>yarn.nodemanager.amrmproxy.interceptor-class.pipeline</name>
@@ -85,15 +85,15 @@
   <!-- Explicitly disbale ha confs -->
   <property>
     <name>yarn.resourcemanager.ha.enabled</name>
-    <value>false</value>
+    <value>true</value>
   </property>
   <property>
     <name>yarn.resourcemanager.ha.automatic-failover.enabled</name>
-    <value>false</value>
+    <value>true</value>
   </property>
   <property>
     <name>yarn.resourcemanager.ha.automatic-failover.embedded</name>
-    <value>false</value>
+    <value>true</value>
   </property>
   <!-- high availability -->
   <property>
@@ -122,6 +122,10 @@
   <property>
     <name>yarn.scheduler.maximum-allocation-mb</name>
     <value>7168</value>
+  </property>
+  <property>
+	  <name>yarn.nodemanager.address</name>
+	  <value>0.0.0.0:7777</value>
   </property>
 
   <!-- MAP REDUCE -->

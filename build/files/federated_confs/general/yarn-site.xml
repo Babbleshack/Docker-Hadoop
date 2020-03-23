@@ -57,7 +57,8 @@
   <!-- Defaults to 60 seconds, but turned down so we can keep cluster consumption relevant -->
   <property>
     <name>yarn.federation.state-store.heartbeat-interval-secs</name>
-    <value>3</value>
+    <value>5</value>
+    <description>Set low so state store data is fresh</description>
   </property>
   <!--Federated State Store Conf 
         Configured for zookeper backing store
@@ -91,20 +92,6 @@
     <name>yarn.resourcemanager.ha.automatic-failover.embedded</name>
     <value>false</value>
   </property>
-  <!--nodemanager confs-->
-  <property>
-    <name>yarn.nodemanager.amrmproxy.enabled</name>
-    <value>true</value>
-  </property>
-  <property>
-    <name>yarn.nodemanager.amrmproxy.ha.enable</name>
-    <value>false</value>
-  </property>
-  <property>
-    <name>yarn.nodemanager.amrmproxy.interceptor-class.pipeline</name>
-    <value>org.apache.hadoop.yarn.server.nodemanager.amrmproxy.FederationInterceptor</value>
-  </property>
-
   <!-- high availability -->
   <property>
 	  <name>yarn.resourcemanager.ha.rm-ids</name>
@@ -119,6 +106,19 @@
 	  <value>yarn-master-0.yarn-service.<!--CLUSTER-ID-VALUE-->:8088</value>
   </property>
 
+  <!--nodemanager confs-->
+  <property>
+    <name>yarn.nodemanager.amrmproxy.enabled</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>yarn.nodemanager.amrmproxy.ha.enable</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>yarn.nodemanager.amrmproxy.interceptor-class.pipeline</name>
+    <value>org.apache.hadoop.yarn.server.nodemanager.amrmproxy.FederationInterceptor</value>
+  </property>
 
   <!-- Cluster Configuration -->
   <!-- Worker(memory)=8GB, Node(mem)=6GB, Container(mem)=[1,2]GB-->
@@ -133,6 +133,10 @@
   <property>
     <name>yarn.scheduler.maximum-allocation-mb</name>
     <value>7168</value>
+  </property>
+  <property>
+	  <name>yarn.nodemanager.address</name>
+	  <value>0.0.0.0:7777</value>
   </property>
 
   <!-- MAP REDUCE -->

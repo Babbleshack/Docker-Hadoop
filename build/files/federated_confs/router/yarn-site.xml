@@ -22,7 +22,7 @@
   </property>
   <property>
 	  <name>yarn.resourcemanager.scheduler.address</name>
-	  <value>yarn-master-0.yarn-service.yarn-subcluster-a:8049</value>
+	  <value>localhost:8049</value>
   </property>
   <property>
 	  <name>yarn.resourcemanager.hostname</name>
@@ -70,6 +70,7 @@
     <name>yarn.router.clientrm.interceptor-class.pipeline</name>
     <value>org.apache.hadoop.yarn.server.router.clientrm.FederationClientInterceptor</value>
   </property>
+
   <!-- Explicitly disbale ha confs -->
   <property>
     <name>yarn.resourcemanager.ha.enabled</name>
@@ -86,15 +87,55 @@
   <!-- high availability -->
   <property>
 	  <name>yarn.resourcemanager.ha.rm-ids</name>
-	  <value><!--CLUSTER-ID-VALUE--></value>
+	  <value>yarn-subcluster-a,yarn-subcluster-b,yarn-subcluster-c</value>
   </property>
   <property>
-	  <name>yarn.resourcemanager.hostname.<!--CLUSTER-ID-VALUE--></name>
-	  <value>yarn-master-0.yarn-service.<!--CLUSTER-ID-VALUE--></value>
+	  <name>yarn.resourcemanager.hostname.yarn-subcluster-a</name>
+	  <value>yarn-master-0.yarn-service.yarn-subcluster-a</value>
   </property>
   <property>
-	  <name>yarn.resourcemanager.webapp.address.<!--CLUSTER-ID-VALUE--></name>
-	  <value>yarn-master-0.yarn-service.<!--CLUSTER-ID-VALUE-->:8088</value>
+	  <name>yarn.resourcemanager.webapp.address.yarn-subcluster-a</name>
+	  <value>yarn-master-0.yarn-service.yarn-subcluster-a:8088</value>
+  </property>
+  <property>
+	  <name>yarn.resourcemanager.address.yarn-subcluster-a</name>
+	  <value>yarn-master-0.yarn-service.yarn-subcluster-a:8032</value>
+  </property>
+  <property>
+	  <name>yarn.resourcemanager.scheduler.address.yarn-subcluster-a</name>
+	  <value>yarn-master-0.yarn-service.yarn-subcluster-a:8030</value>
+  </property>
+  <property>
+	  <name>yarn.resourcemanager.hostname.yarn-subcluster-b</name>
+	  <value>yarn-master-0.yarn-service.yarn-subcluster-b</value>
+  </property>
+  <property>
+	  <name>yarn.resourcemanager.webapp.address.yarn-subcluster-b</name>
+	  <value>yarn-master-0.yarn-service.yarn-subcluster-b:8088</value>
+  </property>
+  <property>
+	  <name>yarn.resourcemanager.address.yarn-subcluster-b</name>
+	  <value>yarn-master-0.yarn-service.yarn-subcluster-b:8032</value>
+  </property>
+  <property>
+	  <name>yarn.resourcemanager.scheduler.address.yarn-subcluster-b</name>
+	  <value>yarn-master-0.yarn-service.yarn-subcluster-b:8030</value>
+  </property>
+  <property>
+	  <name>yarn.resourcemanager.hostname.yarn-subcluster-c</name>
+	  <value>yarn-master-0.yarn-service.yarn-subcluster-c</value>
+  </property>
+  <property>
+	  <name>yarn.resourcemanager.webapp.address.yarn-subcluster-c</name>
+	  <value>yarn-master-0.yarn-service.yarn-subcluster-c:8088</value>
+  </property>
+  <property>
+	  <name>yarn.resourcemanager.address.yarn-subcluster-c</name>
+	  <value>yarn-master-0.yarn-service.yarn-subcluster-c:8032</value>
+  </property>
+  <property>
+	  <name>yarn.resourcemanager.scheduler.address.yarn-subcluster-c</name>
+	  <value>yarn-master-0.yarn-service.yarn-subcluster-c:8030</value>
   </property>
 
 
