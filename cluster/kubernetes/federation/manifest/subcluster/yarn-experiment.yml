@@ -74,9 +74,9 @@ spec:
     - name: mr-web-s
       protocol: TCP
       port: 19890
-      #- name: nodemanager
-      #- protocol: TCP
-      #- port: 0
+    - name: nodemanager
+      protocol: TCP
+      port: 7777
     - name: nm-amrmproxy
       protocol: TCP
       port: 8049
@@ -152,6 +152,17 @@ spec:
     - name: mr-web-10
       protocol: TCP
       port: 55059
+    - name: spark-thrift
+      protocol: TCP
+      port: 2304
+    - name: spark-history
+      protocol: TCP
+      port: 18080
+    - name: spark-shuffle
+      protocol: TCP
+      port: 7337
+
+
 ---
 kind: Service
 apiVersion: v1
@@ -282,6 +293,15 @@ spec:
     - name: mr-web-10
       protocol: TCP
       port: 55059
+    - name: spark-thrift
+      protocol: TCP
+      port: 2304
+    - name: spark-history
+      protocol: TCP
+      port: 18080
+    - name: spark-shuffle
+      protocol: TCP
+      port: 7337
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -320,7 +340,7 @@ spec:
         role: master
       containers:
         - name: yarn-master
-          image: babbleshack/hadoop:3-2-1-experiment
+          image: babbleshack/hadoop:3-2-1-spark
           imagePullPolicy: Always
           command: [ "/bin/bash" ]
           args: [ "/hadoop/scripts/startRM.sh" ]
@@ -409,6 +429,12 @@ spec:
             containerPort: 55058
           - name: mr-web-10
             containerPort: 55059
+          - name: spark-thrift
+            containerPort: 2304
+          - name: spark-history
+            containerPort: 18080
+          - name: spark-shuffle
+            containerPort: 7337
       volumes:
         - name: workers
           configMap:
@@ -451,7 +477,7 @@ spec:
         role: worker
       containers:
         - name: yarn-worker
-          image: babbleshack/hadoop:3-2-1-experiment
+          image: babbleshack/hadoop:3-2-1-spark
           imagePullPolicy: Always
           command: [ "/bin/bash" ]
           args: [ "/hadoop/scripts/startNM.sh" ]
@@ -473,8 +499,8 @@ spec:
               containerPort: 10200
             - name: mapred-admin
               containerPort: 10033
-              #- name: nodemanager
-              #- containerPort: 0
+            - name: nodemanager
+              containerPort: 7777
             - name: nm-amrmproxy
               containerPort: 8049
             - name: nm-collector
@@ -533,3 +559,9 @@ spec:
               containerPort: 55058
             - name: mr-web-10
               containerPort: 55059
+            - name: spark-thrift
+              containerPort: 2304
+            - name: spark-history
+              containerPort: 18080
+            - name: spark-shuffle
+              containerPort: 7337

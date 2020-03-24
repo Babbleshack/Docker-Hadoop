@@ -70,6 +70,11 @@
     <name>yarn.router.clientrm.interceptor-class.pipeline</name>
     <value>org.apache.hadoop.yarn.server.router.clientrm.FederationClientInterceptor</value>
   </property>
+  <property>
+	  <name>yarn.federation.cache-ttl.secs</name>
+	  <value>3</value>
+	  <description>Only 30 nodes in clusters, so ttl can be set very low</description>
+  </property>
 
   <!-- Explicitly disbale ha confs -->
   <property>

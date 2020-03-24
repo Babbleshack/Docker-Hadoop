@@ -98,9 +98,28 @@ RUN mkdir -pv ${HADOOP_DATA_NODE_DATA} \
 WORKDIR /${WORKDIR} 
 
 ##############################
+##SPARK
+#############################
+FROM hadoop AS spark
+
+ENV SPARK_HOME=/opt/spark
+RUN curl -L "http://apache.mirror.anlx.net/spark/spark-3.0.0-preview2/spark-3.0.0-preview2-bin-hadoop3.2.tgz" \
+	-o /tmp/spark.tgz \
+	&& mkdir -v /opt/spark \
+	&& tar xzf /tmp/spark.tgz -C $SPARK_HOME --strip-components 1 \
+	&& rm -f /tmp/spark.tgz
+COPY ./files/vanilla/yarn-site.xml ${HADOOP_CONF_DIR}/yarn-site.xml
+#update path env
+ENV PATH="${PATH}:${SPARK_HOME}/bin"
+#Points to yarn conf dir (yarn-site.xml)
+ENV YARN_CONF_DIR="${HADOOP_CONF_DIR:-/opt/hadoop/etc/hadoop}"
+
+
+
+##############################
 ##FEDERATED IMAGE
 ##############################
-FROM hadoop AS federated
+FROM spark AS federated
 
 RUN mkdir -pv federation/client federation/router && cp -rf ${HADOOP_CONF_DIR}/* /${WORKDIR}/federation/client
 COPY ./files/federated_confs/client/* /${WORKDIR}/federation/client/
@@ -109,6 +128,7 @@ COPY ./files/federated_confs/general/yarn-site.xml ${HADOOP_HOME}/etc/hadoop/yar
 #prepare router confs
 RUN cp -rf ${HADOOP_CONF_DIR}/* ${WORKDIR}/federation/router/
 COPY ./files/federated_confs/router/yarn-site.xml ${WORKDIR}/federation/router/yarn-site.xml
+
 
 ###########################
 ##EXPERIMENTATION
