@@ -2,7 +2,7 @@ FROM ubuntu:bionic AS base
 
 MAINTAINER Babbleshack <dcrl94@gmail.com> Version: 0.1
 
-ARG HADOOP_VERSION_ARG=3.2.1
+ARG HADOOP_VERSION_ARG=3.1.3
 ARG CLUSTER_NAME_ARG=hadoop-cluster
 
 ENV HADOOP_VERSION=$HADOOP_VERSION_ARG
@@ -14,16 +14,15 @@ ENV HELPER_SCRIPTS_DIR=/opt/scripts
 #HADOOP environment vars
 ENV MAPRED_EXAMPLES=/opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-$HADOOP_VERSION.jar
 ENV HADOOP_HOME=/opt/hadoop
-ENV HADOOP_INSTALL=$HADOOP_HOME
-ENV HADOOP_MAPRED_HOME=$HADOOP_HOME
-ENV HADOOP_COMMON_HOME=$HADOOP_HOME
-ENV HADOOP_HDFS_HOME=$HADOOP_HOME
-ENV YARN_HOME=$HADOOP_HOME
-ENV HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
-ENV PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
+ENV HADOOP_INSTALL=${HADOOP_HOME}
+ENV HADOOP_MAPRED_HOME=${HADOOP_HOME}
+ENV HADOOP_COMMON_HOME=${HADOOP_HOME}
+ENV HADOOP_HDFS_HOME=${HADOOP_HOME}
+ENV YARN_HOME=${HADOOP_HOME}
+ENV HADOOP_COMMON_LIB_NATIVE_DIR=${HADOOP_HOME}/lib/native
+ENV PATH=${PATH}:${HADOOP_HOME}/sbin:${HADOOP_HOME}/bin
 ENV HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
 ENV HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop 
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 #HADOOP data directories
 ENV HADOOP_DATA_NODE_DATA=${HADOOP_HOME}/hdfs/datanode
@@ -41,6 +40,9 @@ ENV YARN_EXAMPLES=${HADOOP_HOME}/share/hadoop/mapreduce
 #WORK ENVIRONMENT
 ENV WORKDIR=/hadoop
 
+#Java env var
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
 #Configure Container
 RUN apt update && apt install -y \
         bash \
@@ -49,19 +51,17 @@ RUN apt update && apt install -y \
         openssh-server \
         openssh-client \
         curl \
-        libcgroup1 \
         python3 \
-        python3-pip
+        python3-pip \
+	iproute2
 
 RUN pip3 install yarn_api_client 
 
-
-	#"http://archive.apache.org/dist/hadoop/common/hadoop-3.1.2/hadoop-3.1.2.tar.gz" \
 # Grab hadoop files
 RUN curl -L \
-	"http://mirror.ox.ac.uk/sites/rsync.apache.org/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz" \
+	"https://www.mirrorservice.org/sites/ftp.apache.org/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz" \
 	-o /tmp/hadoop.tar.gz \
-	&& tar xzfv /tmp/hadoop.tar.gz -C /tmp/ \
+	&& tar xzf /tmp/hadoop.tar.gz -C /tmp/ \
 	&& rm -rf /tmp/hadoop.tar.gz \
 	&& mv -v /tmp/hadoop-${HADOOP_VERSION} ${HADOOP_HOME} \
 	&& mkdir -pv ${ENTRYPOINT_SCRIPT_DIR} \
@@ -72,6 +72,9 @@ RUN rm -rf /etc/ssh/ssh_host_dsa_key && ssh-keygen -q -N "" -t dsa -f /etc/ssh/s
 RUN rm -rf /etc/ssh/ssh_host_rsa_key && ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key 
 RUN rm -rf /root/.ssh/id_rsa && ssh-keygen -q -N "" -t rsa -f /root/.ssh/id_rsa 
 RUN cp -f /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
+
+#Set work dir
+WORKDIR ${WORKDIR} 
 
 ###########
 ##Configure hadoop
@@ -85,7 +88,7 @@ COPY ./files/ssh/ssh_config /etc/ssh/
 COPY ./files/scripts/* ${HELPER_SCRIPTS_DIR}/
 
 #Copy init_scripts to work dir
-RUN mkdir -pv /hadoop/scripts
+RUN mkdir -pv ${WORKDIR}/scripts
 COPY ./files/init_scripts/* ${WORKDIR}/scripts/
 
 #Configure hadoop data dirs
@@ -94,46 +97,94 @@ RUN mkdir -pv ${HADOOP_DATA_NODE_DATA} \
         && mkdir -pv ${HADOOP_TEMPDIR} \
         && mkdir -pv ${ENTRYPOINT_SCRIPT_DIR}
 
-#Set work dir
-WORKDIR /${WORKDIR} 
-
-##############################
-##SPARK
-#############################
-FROM hadoop AS spark
-
-ENV SPARK_HOME=/opt/spark
+#Prepare Spark
+ENV SPARK_HOME=/hadoop/spark
 RUN curl -L "http://apache.mirror.anlx.net/spark/spark-3.0.0-preview2/spark-3.0.0-preview2-bin-hadoop3.2.tgz" \
 	-o /tmp/spark.tgz \
-	&& mkdir -v /opt/spark \
+	&& mkdir -v ${SPARK_HOME} \
 	&& tar xzf /tmp/spark.tgz -C $SPARK_HOME --strip-components 1 \
 	&& rm -f /tmp/spark.tgz
-COPY ./files/vanilla/yarn-site.xml ${HADOOP_CONF_DIR}/yarn-site.xml
 #update path env
 ENV PATH="${PATH}:${SPARK_HOME}/bin"
 #Points to yarn conf dir (yarn-site.xml)
 ENV YARN_CONF_DIR="${HADOOP_CONF_DIR:-/opt/hadoop/etc/hadoop}"
 
+############################
+## FLINK
+###########################
+FROM alpine:3 AS flink
 
+ARG FLINK_URL="http://mirror.vorboss.net/apache/flink/flink-1.10.0/flink-1.10.0-bin-scala_2.11.tgz"
+ARG FLINK_SHADE_GIT="https://github.com/apache/flink-shaded.git"
+ARG FLINK_SHADE="https://github.com/apache/flink-shaded/archive/release-10.0.tar.gz"
+
+ENV WORKDIR=/flink
+ENV HADOOP_VERSION=3.2.1
+
+RUN apk update && \
+	apk add maven \
+	git \
+	curl
+#Builds hadoop shaded jars for hadoop
+
+RUN mkdir ${WORKDIR} 
+WORKDIR ${WORKDIR} 
+ENV HADOOP_VERSION=3.2.1
+
+# Prepare flink files
+RUN mkdir ${WORKDIR}/flink \
+	&& curl -L ${FLINK_URL} -o /tmp/flink.tar.gz \
+	&& tar xzf /tmp/flink.tar.gz --strip-components 1 -C ${WORKDIR}/flink \
+	&& rm -f /tmp/flink.tar.gz 
+
+# Prepare shaded files
+RUN curl -L ${FLINK_SHADE} -o /tmp/flink-shaded.tar.gz \
+	&& mkdir ${WORKDIR}/flink-shaded \ 
+	&& tar xzf /tmp/flink-shaded.tar.gz --strip-components 1 -C ${WORKDIR}/flink-shaded \
+	&& rm -f /tmp/flink-shaded.tar.gz 
+
+# Compile flink-shaded and move hadoop uber to $WORKDIR/flink/lib
+RUN cd flink-shaded && mvn clean install -DskipTests -Dhadoop.version=${HADOOP_VERSION} \
+	&& cd ${WORKDIR} \
+	&& cp $(find ${WORKDIR}/flink-shaded -type f -iname "flink-shaded-hadoop-*-uber-*.jar") \
+		${WORKDIR}/flink/lib \
+	&& rm -rf ${WORKDIR}/flink-shaded
+
+RUN tar czf ${WORKDIR}/flink.tar.gz ${WORKDIR}/flink 
 
 ##############################
 ##FEDERATED IMAGE
 ##############################
-FROM spark AS federated
+FROM hadoop AS federated
 
-RUN mkdir -pv federation/client federation/router && cp -rf ${HADOOP_CONF_DIR}/* /${WORKDIR}/federation/client
+#grab flink
+COPY --from=flink /flink/flink.tar.gz .
+RUN tar xzf ${WORKDIR}/flink.tar.gz --strip-components 1 -C ${WORKDIR} && rm -f ${WORKDIR}/flink.tar.gz
+
+#prepare federated confs
+RUN mkdir -pv federation/client federation/router \
+	&& cp -rf ${HADOOP_CONF_DIR}/* /${WORKDIR}/federation/client
 COPY ./files/federated_confs/client/* /${WORKDIR}/federation/client/
 COPY ./files/federated_confs/node/yarn-site.xml /${WORKDIR}/federation/node/yarn-site.xml
 COPY ./files/federated_confs/general/yarn-site.xml ${HADOOP_HOME}/etc/hadoop/yarn-site.xml
+
 #prepare router confs
 RUN cp -rf ${HADOOP_CONF_DIR}/* ${WORKDIR}/federation/router/
 COPY ./files/federated_confs/router/yarn-site.xml ${WORKDIR}/federation/router/yarn-site.xml
 
+#add flink to path
+ENV FLINK_HOME=${WORKDIR}/flink
+ENV PATH=${PATH}:${FLINK_HOME}/bin
 
-###########################
-##EXPERIMENTATION
-##########################
-FROM hadoop AS experiment
+##############################
+## EXPERIMENT SINGLE CLUSTER
+##############################
+FROM hadoop AS single-cluster
+COPY --from=flink /flink/flink.tar.gz .
+RUN tar xzf ${WORKDIR}/flink.tar.gz --strip-components 1 -C ${WORKDIR} && rm -f ${WORKDIR}/flink.tar.gz
+#add flink to path
+ENV FLINK_HOME=${WORKDIR}/flink
+ENV PATH=${PATH}:${FLINK_HOME}/bin
 
-COPY ./files/experiment/yarn-site-simple.xml ${HADOOP_HOME}/etc/hadoop/yarn-site.xml
-
+#COPY Experiment yarn files
+COPY ./files/experiment/yarn-site.xml ${HADOOP_CONF_DIR}/yarn-site.xml

@@ -324,7 +324,7 @@ spec:
         app: yarn
         yarn: master
     spec:
-      hostname: yarn-master-0.yarn-service
+      hostname: "yarn-master-0.yarn-service"
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -340,7 +340,7 @@ spec:
         role: master
       containers:
         - name: yarn-master
-          image: babbleshack/hadoop:3-2-1-spark
+          image: babbleshack/hadoop:3-2-1
           imagePullPolicy: Always
           command: [ "/bin/bash" ]
           args: [ "/hadoop/scripts/startRM.sh" ]
@@ -440,6 +440,48 @@ spec:
           configMap:
             name: workers
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hadoop-exporter
+  namespace: yarn-experiment
+  labels:
+        app: exporter
+        monitor: hadoop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: exporter
+      monitor: hadoop
+  template:
+    metadata:
+      labels:
+        app: exporter
+        monitor: hadoop
+    spec:
+      containers:
+      - name: hadoop-exporter
+        image: zhuzhu/hadoop_exporter:latest
+        imagePullPolicy: Always
+        ports:
+        - name: metrics
+          containerPort: 8000
+        env:
+          - name: CLUSTER_ID
+            value: yarn-experiment
+        command: ["/app/resourcemanager_exporter"]
+        args: [
+        "-resourcemanager.url",
+        "http://yarn-master-0.yarn-service.yarn-experiment:8088",
+        "-web.listen-address",
+        ":8000",
+        "-web.telemetry-path",
+        "/metrics" ]
+        ports:
+          - name: metrics
+            containerPort: 8000
+---
 # stateful set
 apiVersion: apps/v1
 kind: StatefulSet
@@ -462,6 +504,9 @@ spec:
         app: yarn
         yarn: worker
     spec:
+      securityContext:
+        runAsUser: 0
+        runAsGroup: 0
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -477,7 +522,7 @@ spec:
         role: worker
       containers:
         - name: yarn-worker
-          image: babbleshack/hadoop:3-2-1-spark
+          image: babbleshack/hadoop:3-2-1
           imagePullPolicy: Always
           command: [ "/bin/bash" ]
           args: [ "/hadoop/scripts/startNM.sh" ]
@@ -486,6 +531,10 @@ spec:
               value: yarn-experiment
             - name: PASSIVE_MODE
               value: "true"
+          securityContext:
+            allowPrivilegeEscalation: true
+            capabilities:
+              add: ["NET_ADMIN"]
           ports:
             - name: cache-admin
               containerPort: 8047

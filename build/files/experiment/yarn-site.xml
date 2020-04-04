@@ -15,14 +15,13 @@
 <configuration>
   
   <!-- confs for resourcemanager and router -->
-
   <property>
 	  <name>yarn.resourcemanager.address</name>
-	  <value>yarn-master-0.yarn-service.<!--CLUSTER-ID-VALUE-->:8032</value>
+	  <value>yarn-master-0.yarn-service.yarn-experiment:8032</value>
   </property>
   <property>
 	  <name>yarn.resourcemanager.hostname</name>
-	  <value>yarn-master-0.yarn-service.<!--CLUSTER-ID-VALUE--></value>
+	  <value>yarn-master-0.yarn-service.yarn-experiment</value>
   </property>
   <property>
     <name>yarn.webapp.ui2.enable</name>
@@ -34,52 +33,25 @@
   </property>
   <property>
 	  <name>yarn.resourcemanager.resource-tracker.address</name>
-	  <value>yarn-master-0.yarn-service.<!--CLUSTER-ID-VALUE-->:8031</value>
+	  <value>yarn-master-0.yarn-service.yarn-experiment:8031</value>
   </property>
   <property>
     <name>yarn.log-aggregation-enable</name>
     <value>true</value>
   </property>
-
-  <!-- Federated Scheduling -->
-  <property>
-    <name>yarn.federation.enabled</name>
-    <value>false</value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.cluster-id</name>
-    <value><!--CLUSTER-ID-VALUE--></value>
-  </property>
-  <property>
-    <name>yarn.resourcemanager.ha.rm-ids</name>
-    <value><!--CLUSTER-ID-VALUE--></value>
-  </property>
-  <!-- Resource Manager Only -->
-  <property>
-    <name>yarn.resourcemanager.epoch</name>
-    <value><!--RESOURCEMANAGER-EPOCH-VALUE--></value>
-  </property>
-  <!-- Defaults to 60 seconds, but turned down so we can keep cluster consumption relevant -->
-  <property>
-    <name>yarn.federation.state-store.heartbeat-interval-secs</name>
-    <value>3</value>
-  </property>
-  <!--Federated State Store Conf 
-        Configured for zookeper backing store
-    -->
-  <property>
-    <name>yarn.federation.state-store.class</name>
-    <value>org.apache.hadoop.yarn.server.federation.store.impl.ZookeeperFederationStateStore</value>
-  </property>
+  <!--
   <property>
     <name>hadoop.zk.address</name>
     <value>zookeeper-master-0.zookeeper-service.zookeeper:2181</value>
   </property>
+  -->
   <!-- Configure default federation polcies -->
+  <!--
   <property>
     <name>yarn.federation.policy-manager</name>
     <value>org.apache.hadoop.yarn.server.federation.policies.manager.LatencyAwarePolicyManager</value>
   </property>
+  -->
   <!--Router Confs -->
   <!--
   <property>

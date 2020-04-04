@@ -304,6 +304,7 @@ spec:
       labels:
         app: yarn
         yarn: master
+        monitor: hadoop
     spec:
       hostname: yarn-master-0.yarn-service
       affinity:
@@ -321,7 +322,7 @@ spec:
         role: master
       containers:
         - name: yarn-master
-          image: babbleshack/hadoop:3-2-1-federation
+          image: babbleshack/hadoop:3-2-1-federated
           imagePullPolicy: Always
           command: [ "/bin/bash" ]
           args: [ "/hadoop/scripts/startRM.sh" ]
@@ -412,6 +413,23 @@ spec:
             containerPort: 55058
           - name: mr-web-10
             containerPort: 55059
+        - name: hadoop-exporter
+          image: zhuzhu/hadoop_exporter:latest
+          imagePullPolicy: Always
+          ports:
+          - name: metrics
+            containerPort: 8000
+          env:
+            - name: CLUSTER_ID
+              value: yarn-subcluster-a
+          command: ["/app/resourcemanager_exporter"]
+          args: [
+          "-resourcemanager.url",
+          "http://yarn-master-0.yarn-service.yarn-subcluster-a:8088",
+          "-web.listen-address",
+          ":8000",
+          "-web.telemetry-path",
+          "/metrics" ]
       volumes:
         - name: workers
           configMap:
@@ -454,7 +472,7 @@ spec:
         role: worker
       containers:
         - name: yarn-worker
-          image: babbleshack/hadoop:3-2-1-federation
+          image: babbleshack/hadoop:3-2-1-federated
           imagePullPolicy: Always
           command: [ "/bin/bash" ]
           args: [ "/hadoop/scripts/startNM.sh" ]
