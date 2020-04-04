@@ -157,20 +157,19 @@ RUN tar czf ${WORKDIR}/flink.tar.gz ${WORKDIR}/flink
 ##############################
 FROM hadoop AS federated
 
+ENV ROUTER_CONF_DIR=${WORKDIR}/federation/router
+
 #grab flink
 COPY --from=flink /flink/flink.tar.gz .
 RUN tar xzf ${WORKDIR}/flink.tar.gz --strip-components 1 -C ${WORKDIR} && rm -f ${WORKDIR}/flink.tar.gz
 
 #prepare federated confs
-RUN mkdir -pv federation/client federation/router \
-	&& cp -rf ${HADOOP_CONF_DIR}/* /${WORKDIR}/federation/client
-COPY ./files/federated_confs/client/* /${WORKDIR}/federation/client/
 COPY ./files/federated_confs/node/yarn-site.xml /${WORKDIR}/federation/node/yarn-site.xml
-COPY ./files/federated_confs/general/yarn-site.xml ${HADOOP_HOME}/etc/hadoop/yarn-site.xml
+COPY ./files/federated_confs/general/yarn-site.xml ${HADOOP_CONF_DIR}/yarn-site.xml
 
 #prepare router confs
-RUN cp -rf ${HADOOP_CONF_DIR}/* ${WORKDIR}/federation/router/
-COPY ./files/federated_confs/router/yarn-site.xml ${WORKDIR}/federation/router/yarn-site.xml
+RUN cp -rf ${HADOOP_CONF_DIR}/* ${ROUTER_CONF_DIR}/
+COPY ./files/federated_confs/router/yarn-site.xml ${ROUTER_CONF_DIR}/yarn-site.xml
 
 #add flink to path
 ENV FLINK_HOME=${WORKDIR}/flink
