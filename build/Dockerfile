@@ -2,7 +2,7 @@ FROM ubuntu:bionic AS base
 
 MAINTAINER Babbleshack <dcrl94@gmail.com> Version: 0.1
 
-ARG HADOOP_VERSION_ARG=3.1.3
+ARG HADOOP_VERSION_ARG=3.2.1
 ARG CLUSTER_NAME_ARG=hadoop-cluster
 
 ENV HADOOP_VERSION=$HADOOP_VERSION_ARG
@@ -107,7 +107,7 @@ RUN curl -L "http://apache.mirror.anlx.net/spark/spark-3.0.0-preview2/spark-3.0.
 #update path env
 ENV PATH="${PATH}:${SPARK_HOME}/bin"
 #Points to yarn conf dir (yarn-site.xml)
-ENV YARN_CONF_DIR="${HADOOP_CONF_DIR:-/opt/hadoop/etc/hadoop}"
+#ENV YARN_CONF_DIR="${HADOOP_CONF_DIR:-/opt/hadoop/etc/hadoop}"
 
 ############################
 ## FLINK
@@ -168,7 +168,8 @@ COPY ./files/federated_confs/node/yarn-site.xml /${WORKDIR}/federation/node/yarn
 COPY ./files/federated_confs/general/yarn-site.xml ${HADOOP_CONF_DIR}/yarn-site.xml
 
 #prepare router confs
-RUN cp -rf ${HADOOP_CONF_DIR}/* ${ROUTER_CONF_DIR}/
+RUN mkdir -pv ${ROUTER_CONF_DIR} \
+	&& cp -rf ${HADOOP_CONF_DIR}/* ${ROUTER_CONF_DIR}/
 COPY ./files/federated_confs/router/yarn-site.xml ${ROUTER_CONF_DIR}/yarn-site.xml
 
 #add flink to path
