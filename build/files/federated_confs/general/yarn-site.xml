@@ -73,7 +73,7 @@
   </property>
   <property>
     <name>yarn.nodemanager.amrmproxy.enabled</name>
-    <value>false</value>
+    <value>true</value>
   </property>
   <property>
     <name>yarn.nodemanager.amrmproxy.interceptor-class.pipeline</name>
@@ -119,6 +119,18 @@
     <name>yarn.nodemanager.amrmproxy.interceptor-class.pipeline</name>
     <value>org.apache.hadoop.yarn.server.nodemanager.amrmproxy.FederationInterceptor</value>
   </property>
+
+  <!-- Opportunistic Scheduling -->
+  <!--
+  <property>
+	  <name>yarn.resourcemanager.opportunistic-container-allocation.enabled</name>
+	  <value>true</value>
+  </property>
+  <property>
+	  <name>yarn.nodemanager.opportunistic-containers-max-queue-length</name>
+	  <value>0</value>
+  </property>
+  -->
 
   <!-- Cluster Configuration -->
   <!-- Worker(memory)=8GB, Node(mem)=6GB, Container(mem)=[1,2]GB-->
