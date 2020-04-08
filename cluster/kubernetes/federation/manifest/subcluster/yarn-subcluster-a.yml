@@ -153,6 +153,7 @@ spec:
       protocol: TCP
       port: 55059
 
+
 ---
 kind: Service
 apiVersion: v1
@@ -211,6 +212,9 @@ spec:
     - name: tl-web-secure
       protocol: TCP
       port: 8190
+    - name: spark-history
+      protocol: TCP
+      port: 18080
     - name: mr-job-his
       protocol: TCP
       port: 10020
@@ -365,6 +369,8 @@ spec:
             containerPort: 8188
           - name: tl-web-secure
             containerPort: 8190
+          - name: spark-history
+            containerPort: 18080
           - name: mr-job-his
             containerPort: 10020
           - name: mr-admin
