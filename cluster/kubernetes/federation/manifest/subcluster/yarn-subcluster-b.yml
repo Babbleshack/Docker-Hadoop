@@ -57,6 +57,9 @@ spec:
     - name: router-web
       protocol: TCP
       port: 8089
+    - name: rm-rev-proxy
+      protocol: TCP
+      port: 8010
     - name: tl-web
       protocol: TCP
       port: 8188
@@ -128,6 +131,8 @@ spec:
             containerPort: 8088
           - name: router-web
             containerPort: 8089
+          - name: rm-rev-proxy
+            containerPort: 8010
           - name: tl-web
             containerPort: 8188
           - name: spark-history
@@ -195,14 +200,14 @@ spec:
               value: "true"
           ports:
           - name: rm-web
-            port: 8088
+            containerPort: 8088
           - name: router-web
-            port: 8089
+            containerPort: 8089
           - name: tl-web
-            port: 8188
+            containerPort: 8188
           - name: mr-web
-            port: 19888
+            containerPort: 19888
           - name: nodemanager
-            port: 7777
+            containerPort: 7777
           - name: nm-webapp
-            port: 8042
+            containerPort: 8042
