@@ -30,7 +30,7 @@
   </property>
   <property>
     <name>yarn.resourcemanager.webapp.address</name>
-    <value>0.0.0.0:8088</value>
+    <value>yarn-master-0.yarn-service.<!--CLUSTER-ID-VALUE-->:8088</value>
   </property>
   <property>
 	  <name>yarn.resourcemanager.resource-tracker.address</name>
@@ -92,15 +92,15 @@
   <!-- Explicitly disbale ha confs -->
   <property>
     <name>yarn.resourcemanager.ha.enabled</name>
-    <value>true</value>
+    <value>false</value>
   </property>
   <property>
     <name>yarn.resourcemanager.ha.automatic-failover.enabled</name>
-    <value>true</value>
+    <value>false</value>
   </property>
   <property>
     <name>yarn.resourcemanager.ha.automatic-failover.embedded</name>
-    <value>true</value>
+    <value>false</value>
   </property>
   <!-- high availability -->
   <property>

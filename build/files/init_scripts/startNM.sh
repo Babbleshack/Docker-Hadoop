@@ -5,7 +5,7 @@ PASSIVE=${PASSIVE_MODE:-false}
 /etc/init.d/ssh start
 
 echo "Copying configs for nm..."
-#cp -fv /hadoop/node/* /opt/hadoop/etc/hadoop/
+cp -fv /hadoop/federation/node/* /opt/hadoop/etc/hadoop/
 
 echo "Setting federated vars..."
 /hadoop/scripts/writeFederatedVars.sh

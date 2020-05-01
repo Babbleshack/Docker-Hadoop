@@ -21,6 +21,7 @@ $HADOOP_HOME/sbin/start-yarn.sh --daemon start resourcemanager
 # Start History Server
 echo "Starting historyserver..."
 $HADOOP_HOME/bin/mapred --daemon start historyserver
+$HADOOP_HOME/bin/mapred --daemon start timelineserver
 
 echo "Waiting for RM's to start"
 sleep 5

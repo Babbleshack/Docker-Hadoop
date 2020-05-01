@@ -53,6 +53,8 @@ RUN apt update && apt install -y \
         curl \
         python3 \
         python3-pip \
+	net-tools \
+	iputils-ping \
 	iproute2
 
 RUN pip3 install yarn_api_client 
@@ -104,6 +106,9 @@ RUN curl -L "http://apache.mirror.anlx.net/spark/spark-3.0.0-preview2/spark-3.0.
 	&& mkdir -v ${SPARK_HOME} \
 	&& tar xzf /tmp/spark.tgz -C $SPARK_HOME --strip-components 1 \
 	&& rm -f /tmp/spark.tgz
+## COPY SPARK CONF FILES
+COPY files/spark/conf/* ${SPARK_HOME}/conf/
+RUN mkdir ${WORKDIR}/spark-metrics
 #update path env
 ENV PATH="${PATH}:${SPARK_HOME}/bin"
 #Points to yarn conf dir (yarn-site.xml)
@@ -164,7 +169,7 @@ COPY --from=flink /flink/flink.tar.gz .
 RUN tar xzf ${WORKDIR}/flink.tar.gz --strip-components 1 -C ${WORKDIR} && rm -f ${WORKDIR}/flink.tar.gz
 
 #prepare federated confs
-COPY ./files/federated_confs/node/yarn-site.xml /${WORKDIR}/federation/node/yarn-site.xml
+COPY ./files/federated_confs/node/yarn-site.xml ${WORKDIR}/federation/node/yarn-site.xml
 COPY ./files/federated_confs/general/yarn-site.xml ${HADOOP_CONF_DIR}/yarn-site.xml
 
 #prepare router confs
