@@ -19,15 +19,15 @@
   </property>
   <property>
 	  <name>yarn.resourcemanager.address</name>
-	  <value>yarn-master-0.yarn-service.yarn:8032</value>
+	  <value>yarn-master-0.yarn-service:8032</value>
   </property>
   <property>
 	  <name>yarn.resourcemanager.webapp.address</name>
-	  <value>0.0.0.0:8088</value>
+	  <value>yarn-master-0.yarn-service:8088</value>
   </property>
   <property>
 	  <name>yarn.resourcemanager.scheduler.address</name>
-	  <value>yarn-master-0.yarn-service.yarn:8030</value>
+	  <value>yarn-master-0.yarn-service:8030</value>
   </property>
   <property>
 	  <name>yarn.resourcemanager.hostname</name>
@@ -39,7 +39,7 @@
   </property>
   <property>
 	  <name>yarn.resourcemanager.resource-tracker.address</name>
-	  <value>yarn-master-0.yarn-service.yarn:8031</value>
+	  <value>yarn-master-0.yarn-service:8031</value>
   </property>
   <property>
     <name>yarn.log-aggregation-enable</name>
