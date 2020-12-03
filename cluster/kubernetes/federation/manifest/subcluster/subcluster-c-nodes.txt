@@ -1,0 +1,11 @@
+core-node-41	10.30.16.170
+core-node-62	10.30.16.171
+core-node-01	10.30.16.172
+core-node-08	10.30.16.173
+core-node-50	10.30.16.174
+core-node-25	10.30.16.175
+core-node-60	10.30.16.176
+core-node-33	10.30.16.177
+core-node-34	10.30.16.178
+core-node-35	10.30.16.179
+core-node-13	10.30.16.180

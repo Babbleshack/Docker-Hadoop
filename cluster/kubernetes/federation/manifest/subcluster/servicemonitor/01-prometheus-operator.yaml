@@ -1,0 +1,14 @@
+---
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: Prometheus
+metadata:
+    name: yarn-subcluster-a-monitor
+    namespace: monitoring
+    labels:
+        app: yarn
+spec:
+    version: v1.3.0
+    serviceMonitors:
+    - selector:
+        matchLabels:
+            app: yarn

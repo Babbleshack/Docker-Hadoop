@@ -41,3 +41,4 @@ Sessionx.vim
 # Coc configuration directory
 .vim
 
+*.tar.gz

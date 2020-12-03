@@ -1,0 +1,18 @@
+---
+#namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: yarn-subcluster-a
+---
+#namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: yarn-subcluster-b
+---
+#namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: yarn-subcluster-c

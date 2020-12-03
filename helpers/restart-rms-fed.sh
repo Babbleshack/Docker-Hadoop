@@ -1,8 +1,8 @@
 #!/bin/bash
-for SC in a b c
+clusters=(yarn-subcluster-a yarn-subcluster-b yarn-subcluster-c)
+for SC in "${clusters[@]}";
 do
-	echo "Restarting Subcluster $SC"
-	kubectl exec -n yarn-subcluster-$SC yarn-master-0 stop-yarn.sh \
-		&& kubectl exec -n yarn-subcluster-$SC yarn-master-0 start-yarn.sh
-done
+	kubectl exec -n $SC yarn-master-0 -c yarn-master -- stop-yarn.sh \
+	&& kubectl exec -n $SC yarn-master-0 -c yarn-master -- start-yarn.sh
 
+done
